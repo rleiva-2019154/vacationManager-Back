@@ -3,12 +3,13 @@ import express from "express";
 import cors from 'cors';
 import helmet from "helmet";
 import morgan from "morgan";
+import authRoutes from "../src/auth/auth.routes.js"
 import { dbConnection } from './db.js'
 import { createDefaultBossUser } from "../src/auth/auth.controller.js";
 
 export class ExpressServer {
     constructor(){
-        this.urlBase = '/vacationManager-Back'
+        this.urlBase = '/vacationManager/v1'
         this.app = express()
         this.middlewares()
         this.connectDB()
@@ -30,7 +31,7 @@ export class ExpressServer {
         this.app.use(morgan('dev'))
     }
     routes(){
-        //this.app.use(`${this.urlBase}`)
+        this.app.use(`${this.urlBase}/auth`, authRoutes)
     }
     listen(){
         this.app.listen(process.env.PORT, ()=>{
