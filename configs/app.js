@@ -4,6 +4,7 @@ import cors from 'cors';
 import helmet from "helmet";
 import morgan from "morgan";
 import { dbConnection } from './db.js'
+import { createDefaultBossUser } from "../src/auth/auth.controller.js";
 
 export class ExpressServer {
     constructor(){
@@ -14,7 +15,13 @@ export class ExpressServer {
         this.routes()
     }
     async connectDB(){
-        await dbConnection()
+        try {
+            await dbConnection(),
+            await createDefaultBossUser();
+        } catch (err) {
+            console.error("Error al conectar a la base de datos o crear el usuario BOSS", err);
+            process.exit(1);
+        } 
     }
     middlewares(){
         this.app.use(cors())
