@@ -4,6 +4,7 @@ import cors from 'cors';
 import helmet from "helmet";
 import morgan from "morgan";
 import authRoutes from "../src/auth/auth.routes.js"
+import vacationsRoutes from "../src/vacationRequest/vacationRequest.routes.js";
 import { dbConnection } from './db.js'
 import { createDefaultBossUser } from "../src/auth/auth.controller.js";
 
@@ -32,6 +33,7 @@ export class ExpressServer {
     }
     routes(){
         this.app.use(`${this.urlBase}/auth`, authRoutes)
+        this.app.use(`${this.urlBase}/vacations`, vacationsRoutes)
     }
     listen(){
         this.app.listen(process.env.PORT, ()=>{

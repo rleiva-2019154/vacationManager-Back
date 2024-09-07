@@ -36,3 +36,41 @@ export const loginValidator = [
         .isLength({ min: 6 }).withMessage("La contraseña debe ser mayor a seis caracteres"),
     validateInput
 ];
+
+export const addVacationRequestValidator = [
+    check('uid', "El ID del usuario es obligatorio")
+        .not().isEmpty()
+        .isMongoId().withMessage("El ID del usuario debe ser un ObjectId válido"),
+    
+    check('startTime', "La fecha de inicio es obligatoria")
+        .not().isEmpty()
+        .isDate({ format: 'YYYY-MM-DD' }).withMessage("La fecha de inicio debe estar en un formato válido")
+        .custom((value) => {
+            const today = new Date();
+            today.setHours(0, 0, 0, 0); // Eliminar la parte de la hora para comparar solo la fecha
+            const startDate = new Date(value);
+
+            if (startDate <= today) {
+                throw new Error("La fecha de inicio debe ser posterior a la fecha actual");
+            }
+            return true;
+        }),
+    
+    check('endTime', "La fecha de finalización es obligatoria")
+        .not().isEmpty()
+        .isDate({ format: 'YYYY-MM-DD' }).withMessage("La fecha de finalización debe estar en un formato válido")
+        .custom((value, { req }) => {
+            const startDate = new Date(req.body.startTime);
+            const endDate = new Date(value);
+
+            if (endDate <= startDate) {
+                throw new Error("La fecha de finalización debe ser posterior a la fecha de inicio");
+            }
+            return true;
+        }),
+    check('comments')
+        .optional()
+        .isLength({ max: 500 }).withMessage("Los comentarios no pueden exceder los 500 caracteres"),
+    
+    validateInput
+];
