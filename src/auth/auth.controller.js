@@ -38,7 +38,7 @@ export const register = async (req, res) => {
         const data = req.body;
 
         // Asegura que el rol sea siempre 'EMPLOYEE'
-        data.role = 'EMPLOYEE';
+        data.role = 'UNASSIGNED';
 
         const salt = await bcryptjs.genSalt();
         data.password = await bcryptjs.hash(data.password, salt);
@@ -47,10 +47,11 @@ export const register = async (req, res) => {
         await user.save();
 
         return res.send({
-            message: `Usuario agregado a la base de datos correctamente, inicia sesión con el correo ${user.email}`,
+            message: `Usuario agregado a la base de datos correctamente, para iniciar sesion espera a que te asignen un rol.`,
             userDetails: {
                 user: user.username,
-                email: user.email
+                email: user.email,
+                role: user.role
             }
         });
     } catch (err) {
