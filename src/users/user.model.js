@@ -36,7 +36,7 @@ const userSchema = Schema(
         },
         role: {
             type: String,
-            enum: ['BOSS', 'EMPLOYEE'],
+            enum: ['ADMIN', 'BOSS', 'EMPLOYEE'],
             required: true
         }
     },
