@@ -14,6 +14,7 @@ export const createDefaultBossUser = async () => {
             const defaultBoss = new User({
                 name: 'Boss',
                 surname: 'Boss',
+                dpi: 3635003830101,
                 username: 'boss',
                 email: 'boss@example.com',
                 password: hashedPassword,
