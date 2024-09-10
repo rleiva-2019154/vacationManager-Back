@@ -3,29 +3,29 @@ import User from "../users/user.model.js";
 import bcryptjs from 'bcryptjs';
 
 // Función para crear un usuario BOSS por defecto
-export const createDefaultBossUser = async () => {
+export const createDefaultAdminUser = async () => {
     try {
-        const bossExists = await User.findOne({ role: 'BOSS' });
+        const AdminExists = await User.findOne({ role: 'ADMIN' });
 
-        if (!bossExists) {
+        if (!AdminExists) {
             const salt = await bcryptjs.genSalt();
             const hashedPassword = await bcryptjs.hash('defaultPassword123', salt);
 
-            const defaultBoss = new User({
-                name: 'Boss',
-                surname: 'Boss',
+            const defaultAdmin = new User({
+                name: 'Admin',
+                surname: 'Admin',
                 dpi: 3635003830101,
-                username: 'boss',
-                email: 'boss@example.com',
+                username: 'admin',
+                email: 'admin@example.com',
                 password: hashedPassword,
-                role: 'BOSS',
+                role: 'ADMIN',
                 vacationDaysAvailable: 15
             });
 
-            await defaultBoss.save();
-            console.log('Usuario BOSS por defecto creado exitosamente.');
+            await defaultAdmin.save();
+            console.log('Usuario ADMIN por defecto creado exitosamente.');
         } else {
-            console.log('Usuario BOSS ya existe.');
+            console.log('Usuario ADMIN ya existe.');
         }
     } catch (err) {
         console.error('Error al crear el usuario BOSS por defecto', err);

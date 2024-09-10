@@ -6,7 +6,7 @@ import morgan from "morgan";
 import authRoutes from "../src/auth/auth.routes.js"
 import vacationsRoutes from "../src/vacationRequest/vacationRequest.routes.js";
 import { dbConnection } from './db.js'
-import { createDefaultBossUser } from "../src/auth/auth.controller.js";
+import { createDefaultAdminUser } from "../src/auth/auth.controller.js";
 
 export class ExpressServer {
     constructor(){
@@ -19,7 +19,7 @@ export class ExpressServer {
     async connectDB(){
         try {
             await dbConnection(),
-            await createDefaultBossUser();
+            await createDefaultAdminUser();
         } catch (err) {
             console.error("Error al conectar a la base de datos o crear el usuario BOSS", err);
             process.exit(1);
