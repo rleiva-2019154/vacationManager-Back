@@ -60,6 +60,53 @@ export const register = async (req, res) => {
     }
 };
 
+export const assignRole = async (req, res) => {
+    const { userId, role } = req.body;
+
+    // Verificar que el rol sea válido ('BOSS' o 'EMPLOYEE')
+    const validRoles = ['BOSS', 'EMPLOYEE'];
+    if (!validRoles.includes(role)) {
+        return res.status(400).json({
+            msg: 'Rol inválido. Los roles válidos son BOSS o EMPLOYEE.'
+        });
+    }
+
+    try {
+        // Buscar al usuario por ID
+        const user = await User.findById(userId);
+
+        if (!user) {
+            return res.status(404).json({
+                msg: 'Usuario no encontrado.'
+            });
+        }
+
+        // Verificar si ya tiene el rol asignado
+        if (user.role === role) {
+            return res.status(400).json({
+                msg: `El usuario ya tiene el rol ${role}.`
+            });
+        }
+
+        // Asignar el nuevo rol
+        user.role = role;
+        await user.save();
+
+        return res.json({
+            msg: `Rol de usuario actualizado a ${role} exitosamente.`,
+            userDetails: {
+                username: user.username,
+                email: user.email,
+                role: user.role
+            }
+        });
+    } catch (err) {
+        console.error('Error al asignar rol', err);
+        return res.status(500).send({ message: 'Error al asignar rol, intenta de nuevo más tarde', err });
+    }
+};
+
+
 // Función de inicio de sesión
 export const login = async (req, res) => {
     const { username, email, password } = req.body;
