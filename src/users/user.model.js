@@ -1,4 +1,4 @@
-import { Schema, model } from "mongoose"
+import { Schema, model } from "mongoose";
 
 const userSchema = Schema(
     {
@@ -10,6 +10,11 @@ const userSchema = Schema(
         surname: {
             type: String,
             required: true
+        },
+        dpi: {
+            type: Number,
+            required: true,
+            unique: true  // Asegura que el DPI sea único
         },
         username: {
             type: String,
@@ -38,6 +43,6 @@ const userSchema = Schema(
     {
         versionKey: false
     }
-)
+);
 
-export default model("User", userSchema)
+export default model("User", userSchema);

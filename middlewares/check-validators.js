@@ -17,8 +17,12 @@ export const registerValidator = [
         .not().isEmpty().withMessage("El correo electronico es obligatorio")
         .isEmail().withMessage("El correo proporcionado no es valido"),
     check('password')
-    .not().isEmpty().withMessage("La password es obligatoria")
-    .isLength({ min: 6 }).withMessage("La password debe ser mayor a seis caracteres"),
+        .not().isEmpty().withMessage("La password es obligatoria")
+        .isLength({ min: 6 }).withMessage("La password debe ser mayor a seis caracteres"),
+    check('dpi')
+        .not().isEmpty().withMessage("El DPI es obligatorio")
+        .isNumeric().withMessage("El DPI debe contener solo números")
+        .isLength({ min: 13, max: 13 }).withMessage("El DPI debe tener exactamente 13 caracteres"),
     validateInput
 ]
 
