@@ -1,0 +1,255 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "VacationManager",
+    "dateExported": "2024-09-12T23:25:08.324Z",
+    "version": "1.1",
+    "folders": [
+        {
+            "_id": "039f5a7a-9c6f-47d7-90f8-8d98aed55e5e",
+            "name": "Auth",
+            "containerId": "",
+            "created": "2024-09-04T17:31:24.549Z",
+            "sortNum": 10000
+        },
+        {
+            "_id": "d4c508eb-cb90-4a5a-8e61-9aaeca20a1ea",
+            "name": "Vacation Request",
+            "containerId": "",
+            "created": "2024-09-06T21:54:07.621Z",
+            "sortNum": 20000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "ac972c68-bac5-41ad-9b35-fc2246faaf82",
+            "colId": "d7882ca4-ee7d-4ef7-af33-25d61fcebfd6",
+            "containerId": "039f5a7a-9c6f-47d7-90f8-8d98aed55e5e",
+            "name": "Login Admin",
+            "url": "auth/login",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-09-10T18:21:34.660Z",
+            "modified": "2024-09-10T18:27:35.286Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "email",
+                        "value": "",
+                        "isDisabled": true
+                    },
+                    {
+                        "name": "username",
+                        "value": "admin"
+                    },
+                    {
+                        "name": "password",
+                        "value": "defaultPassword123"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "2fbbcfc9-f904-4725-aa3a-ca2b354c63d0",
+            "colId": "d7882ca4-ee7d-4ef7-af33-25d61fcebfd6",
+            "containerId": "039f5a7a-9c6f-47d7-90f8-8d98aed55e5e",
+            "name": "Login",
+            "url": "auth/login",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-09-04T17:31:30.669Z",
+            "modified": "2024-09-10T18:56:08.747Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "username",
+                        "value": "rleiva"
+                    },
+                    {
+                        "name": "password",
+                        "value": "12345678"
+                    },
+                    {
+                        "name": "email",
+                        "value": "rleiva@gmail.com",
+                        "isDisabled": true
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "9ee132c8-d6ae-40a3-a29b-e0959121c81f",
+            "colId": "d7882ca4-ee7d-4ef7-af33-25d61fcebfd6",
+            "containerId": "039f5a7a-9c6f-47d7-90f8-8d98aed55e5e",
+            "name": "Login Employee",
+            "url": "auth/login",
+            "method": "POST",
+            "sortNum": 25000,
+            "created": "2024-09-06T23:20:15.306Z",
+            "modified": "2024-09-10T18:56:10.341Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "username",
+                        "value": "rleiva01"
+                    },
+                    {
+                        "name": "password",
+                        "value": "12345678"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "ed3bdfe6-851f-49b6-9f8e-76916e91cf3e",
+            "colId": "d7882ca4-ee7d-4ef7-af33-25d61fcebfd6",
+            "containerId": "039f5a7a-9c6f-47d7-90f8-8d98aed55e5e",
+            "name": "Register",
+            "url": "auth/register",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2024-09-04T17:39:47.909Z",
+            "modified": "2024-09-10T18:42:15.429Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "name",
+                        "value": "Rudgar"
+                    },
+                    {
+                        "name": "surname",
+                        "value": "Leiva"
+                    },
+                    {
+                        "name": "username",
+                        "value": "rleiva01"
+                    },
+                    {
+                        "name": "email",
+                        "value": "rleiva01@gmail.com"
+                    },
+                    {
+                        "name": "password",
+                        "value": "12345678"
+                    },
+                    {
+                        "name": "dpi",
+                        "value": "3635003830103"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "33373b6f-e11c-40e6-aeb0-66bbd1cec55b",
+            "colId": "d7882ca4-ee7d-4ef7-af33-25d61fcebfd6",
+            "containerId": "d4c508eb-cb90-4a5a-8e61-9aaeca20a1ea",
+            "name": "Add Vacations",
+            "url": "vacations/addVacations",
+            "method": "POST",
+            "sortNum": 40000,
+            "created": "2024-09-06T21:55:46.370Z",
+            "modified": "2024-09-10T20:34:50.893Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NmUwODhhMmMwMThhYWQxNjQ1MzVhMGYiLCJlbWFpbCI6InJsZWl2YUBnbWFpbC5jb20iLCJpYXQiOjE3MjU5OTQ1NzYsImV4cCI6MTcyNjAwNTM3Nn0.AVyFZp1BGePwVJa-wHqG7ByKdMcOisKQshpWhlM3ZmA"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "uid",
+                        "value": "66e088a2c018aad164535a0f"
+                    },
+                    {
+                        "name": "startTime",
+                        "value": "2024-09-14"
+                    },
+                    {
+                        "name": "endTime",
+                        "value": "2024-09-15"
+                    },
+                    {
+                        "name": "comments",
+                        "value": ""
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "f9054082-ef76-4c1a-bfa5-182dc9ca2f8c",
+            "colId": "d7882ca4-ee7d-4ef7-af33-25d61fcebfd6",
+            "containerId": "d4c508eb-cb90-4a5a-8e61-9aaeca20a1ea",
+            "name": "Aprove",
+            "url": "vacations/aproveVacations/66db961db9e499e57a978e04",
+            "method": "PUT",
+            "sortNum": 60000,
+            "created": "2024-09-06T23:51:31.832Z",
+            "modified": "2024-09-06T23:58:23.078Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "ae9d8f3e-4e9d-4baf-9ff5-e05b7ca4d191",
+            "colId": "d7882ca4-ee7d-4ef7-af33-25d61fcebfd6",
+            "containerId": "039f5a7a-9c6f-47d7-90f8-8d98aed55e5e",
+            "name": "Assign Role",
+            "url": "auth/assignRole",
+            "method": "POST",
+            "sortNum": 80000,
+            "created": "2024-09-10T18:28:06.537Z",
+            "modified": "2024-09-10T18:42:38.995Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NmRmOWEyYWZiN2E2Y2ZhZDAwYjAyMzAiLCJlbWFpbCI6ImFkbWluQGV4YW1wbGUuY29tIiwiaWF0IjoxNzI1OTkyODU1LCJleHAiOjE3MjYwMDM2NTV9.VlrjB1SB6M5BWhpGo8S1pqDWP2ovk0My-7gEr_PLPN0"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "userId",
+                        "value": "66e09307d41e04eefe23a7ae"
+                    },
+                    {
+                        "name": "role",
+                        "value": "EMPLOYEE"
+                    }
+                ]
+            },
+            "tests": []
+        }
+    ],
+    "settings": {
+        "options": {
+            "baseUrl": "localhost:2656/vacationManager/v1/"
+        }
+    }
+}
