@@ -46,8 +46,8 @@ export const approveVacation = async (req, res) => {
         }
 
         // Verificar si la solicitud ya está aprobada
-        if (vacationRequest.status === 'Aprobado') {
-            return res.status(400).json({ message: 'Esta solicitud ya ha sido aprobada.' });
+        if (vacationRequest.status === 'Aprobado' || vacationRequest.status === 'Rechazado') {
+            return res.status(400).json({ message: 'Esta solicitud ya ha sido aprobada o rechazada.' });
         }
 
         // Buscar al usuario asociado con la solicitud de vacaciones
@@ -104,3 +104,58 @@ export const approveVacation = async (req, res) => {
         return res.status(500).send({ message: 'No se pudo aprobar la solicitud de vacaciones, intenta de nuevo más tarde', err });
     }
 };
+
+export const refuseVacation = async (req, res) => {
+    try {
+        const { requestId } = req.params;
+        const { rejectedComments } = req.body; // Comentarios opcionales sobre el rechazo
+        const { user } = req;  // Usuario que está intentando rechazar la solicitud
+
+        // Buscar la solicitud de vacaciones por ID
+        const vacationRequest = await vacationRequestModel.findById(requestId);
+        if (!vacationRequest) {
+            return res.status(404).json({ message: 'Solicitud de vacaciones no encontrada' });
+        }
+
+        // Verificar si la solicitud ya está aprobada o rechazada
+        if (vacationRequest.status === 'Aprobado' || vacationRequest.status === 'Rechazado') {
+            return res.status(400).json({ message: 'Esta solicitud ya ha sido aprobada o rechazada.' });
+        }
+
+        // Buscar al usuario asociado con la solicitud de vacaciones
+        const requestingUser = await User.findById(vacationRequest.uid);
+        if (!requestingUser) {
+            return res.status(404).json({ message: 'Usuario que solicitó las vacaciones no encontrado' });
+        }
+
+        // Verificar roles y restricciones
+        if (user.role === 'BOSS' && requestingUser.role !== 'EMPLOYEE') {
+            // Un BOSS solo puede rechazar las solicitudes de empleados
+            return res.status(403).json({ message: 'Un BOSS solo puede rechazar solicitudes de EMPLOYEES.' });
+        }
+
+        if (user.role === 'BOSS' && user._id.equals(requestingUser._id)) {
+            // Un BOSS no puede rechazar sus propias vacaciones
+            return res.status(403).json({ message: 'Un BOSS no puede rechazar sus propias vacaciones.' });
+        }
+
+        // Agregar comentarios de rechazo si existen
+        if (rejectedComments) {
+            vacationRequest.comments = vacationRequest.comments ? `${vacationRequest.comments} ${rejectedComments}` : rejectedComments;
+        }
+
+        // Actualizar el estado de la solicitud a 'Rechazado'
+        vacationRequest.status = 'Rechazado';
+
+        // Guardar la solicitud de vacaciones actualizada
+        await vacationRequest.save();
+
+        return res.status(200).json({ 
+            message: 'Solicitud de vacaciones rechazada correctamente.',
+            vacationRequest
+        });
+    } catch (err) {
+        console.error('Error al rechazar la solicitud de vacaciones', err);
+        return res.status(500).send({ message: 'No se pudo rechazar la solicitud de vacaciones, intenta de nuevo más tarde', err });
+    }
+}
