@@ -78,3 +78,17 @@ export const addVacationRequestValidator = [
     
     validateInput
 ];
+
+export const addHolidayValidator = [
+    check('date', "La fecha de inicio es obligatoria")
+    .not().isEmpty()
+    .isDate({ format: 'YYYY-MM-DD' }).withMessage("La fecha de inicio debe estar en un formato válido"),
+    check('name', "El nombre es obligatorio").not().isEmpty(),
+]
+
+export const updateHolidayValidator = [
+    check('date', "No puedes mandar campos vacios")
+    .not().isEmpty()
+    .isDate({ format: 'YYYY-MM-DD' }).withMessage("La fecha de inicio debe estar en un formato válido"),
+    check('name', "No puedes mandar campos vacios").not().isEmpty(),
+]
