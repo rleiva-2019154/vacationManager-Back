@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import vacationRequestModel from "./vacationRequest.model.js";
 import User from "../users/user.model.js";
+import Holiday from "../holidays/holiday.model.js"
 
 export const addVacations = async (req, res) => {
     try {
@@ -81,19 +82,13 @@ export const approveVacation = async (req, res) => {
             return res.status(403).json({ message: 'Un BOSS no puede aprobar sus propias vacaciones.' });
         }
 
-        // Calcular el número de días solicitados
-        const startTime = new Date(vacationRequest.startTime);
-        const endTime = new Date(vacationRequest.endTime);
-        const timeDiff = Math.abs(endTime.getTime() - startTime.getTime());
-        const daysRequested = Math.ceil(timeDiff / (1000 * 3600 * 24));
-
         // Verificar si el usuario tiene suficientes días disponibles
-        if (requestingUser.vacationDaysAvailable < daysRequested) {
+        if (requestingUser.vacationDaysAvailable < vacationRequest.totalDaysRequested) {
             return res.status(400).json({ message: 'El usuario no tiene suficientes días de vacaciones disponibles.' });
         }
 
         // Restar los días de vacaciones solicitados
-        requestingUser.vacationDaysAvailable -= daysRequested;
+        requestingUser.vacationDaysAvailable -= vacationRequest.totalDaysRequested;
 
         // Guardar los cambios en el usuario
         await requestingUser.save();
