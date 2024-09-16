@@ -3,7 +3,8 @@ import { validateJwt } from "../../middlewares/validate_Jwt.js";
 import {
     addVacations,
     approveVacation,
-    refuseVacation
+    refuseVacation,
+    getAvailableVacationDays
 } from "./vacationRequest.controller.js"
 import { isAdmin, isBoss, isEmployee, isBossOrEmployee } from "../../middlewares/role-auth.js";
 import { addVacationRequestValidator } from "../../middlewares/check-validators.js";
@@ -19,5 +20,7 @@ api.put('/approveVacationEmployee/:requestId', validateJwt, isBoss, approveVacat
 api.put('/refuseVacationBoss/:requestId', validateJwt, isAdmin, refuseVacation)
 
 api.put('/refuseVacationEmployee/:requestId', validateJwt, isBoss, refuseVacation)
+
+api.get('/getDays/:uid', validateJwt, isBossOrEmployee, getAvailableVacationDays);
 
 export default api
