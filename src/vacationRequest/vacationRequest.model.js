@@ -15,6 +15,9 @@ const vacationRequestSchema = Schema (
             type: Date,
             required: true
         },
+        totalDaysRequested: {
+            type: Number
+        },
         status: {
             type: String,
             enum: ['Pendiente', 'Aprobado', 'Rechazado'],

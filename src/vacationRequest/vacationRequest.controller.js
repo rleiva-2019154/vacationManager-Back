@@ -12,13 +12,27 @@ export const addVacations = async (req, res) => {
             return res.status(404).json({ message: 'Usuario no encontrado' });
         }
 
-        // Crear nueva solicitud de vacaciones (sin restar días)
+        // Convertir las fechas a objetos de tipo Date
+        const start = new Date(startTime);
+        const end = new Date(endTime);
+
+        // Verificar que la fecha de inicio sea anterior a la fecha de fin
+        if (end < start) {
+            return res.status(400).json({ message: 'La fecha de fin debe ser posterior a la fecha de inicio' });
+        }
+
+        // Calcular el número de días solicitados de manera inclusiva (contando ambos extremos)
+        const timeDiff = Math.abs(end.getTime() - start.getTime());
+        const daysRequested = Math.ceil(timeDiff / (1000 * 3600 * 24)) + 1;  // Sumar 1 para incluir el día de inicio y fin
+
+        // Crear nueva solicitud de vacaciones
         const vacationRequest = new vacationRequestModel({
             uid: user._id,
-            startTime: new Date(startTime),
-            endTime: new Date(endTime),
+            startTime: start,
+            endTime: end,
+            totalDaysRequested: daysRequested,  // Asignar los días calculados
             comments: comments || '',
-            status: 'Pendiente' // El estado inicial es 'Pendiente'
+            status: 'Pendiente'  // El estado inicial es 'Pendiente'
         });
 
         await vacationRequest.save();

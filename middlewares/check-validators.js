@@ -72,6 +72,8 @@ export const addVacationRequestValidator = [
             }
             return true;
         }),
+    check('totalDaysRequested')
+        .optional(),
     check('comments')
         .optional()
         .isLength({ max: 500 }).withMessage("Los comentarios no pueden exceder los 500 caracteres"),
