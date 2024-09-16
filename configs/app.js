@@ -5,6 +5,7 @@ import helmet from "helmet";
 import morgan from "morgan";
 import authRoutes from "../src/auth/auth.routes.js"
 import vacationsRoutes from "../src/vacationRequest/vacationRequest.routes.js";
+import holidayRoutes from "../src/holidays/holiday.routes.js"
 import { dbConnection } from './db.js'
 import { createDefaultAdminUser } from "../src/auth/auth.controller.js";
 
@@ -34,6 +35,7 @@ export class ExpressServer {
     routes(){
         this.app.use(`${this.urlBase}/auth`, authRoutes)
         this.app.use(`${this.urlBase}/vacations`, vacationsRoutes)
+        this.app.use(`${this.urlBase}/holidays`, holidayRoutes)
     }
     listen(){
         this.app.listen(process.env.PORT, ()=>{
