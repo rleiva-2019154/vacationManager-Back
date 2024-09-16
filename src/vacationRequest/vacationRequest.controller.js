@@ -24,14 +24,26 @@ export const addVacations = async (req, res) => {
 
         // Calcular el número de días solicitados de manera inclusiva (contando ambos extremos)
         const timeDiff = Math.abs(end.getTime() - start.getTime());
-        const daysRequested = Math.ceil(timeDiff / (1000 * 3600 * 24)) + 1;  // Sumar 1 para incluir el día de inicio y fin
+        let daysRequested = Math.ceil(timeDiff / (1000 * 3600 * 24)) + 1;  // Sumar 1 para incluir el día de inicio y fin
+
+        // Obtener los días festivos dentro del rango de fechas solicitadas
+        const holidays = await Holiday.find({
+            date: {
+                $gte: start,
+                $lte: end
+            }
+        });
+
+        // Restar los días festivos del total de días solicitados
+        const holidayCount = holidays.length;
+        daysRequested -= holidayCount;  // Restar la cantidad de días festivos encontrados
 
         // Crear nueva solicitud de vacaciones
         const vacationRequest = new vacationRequestModel({
             uid: user._id,
             startTime: start,
             endTime: end,
-            totalDaysRequested: daysRequested,  // Asignar los días calculados
+            totalDaysRequested: daysRequested,  // Asignar los días calculados (excluyendo festivos)
             comments: comments || '',
             status: 'Pendiente'  // El estado inicial es 'Pendiente'
         });
@@ -39,7 +51,7 @@ export const addVacations = async (req, res) => {
         await vacationRequest.save();
 
         return res.status(201).json({
-            message: 'Solicitud de vacaciones creada correctamente. A la espera de aprobación.',
+            message: `Solicitud de vacaciones creada correctamente. ${holidayCount > 0 ? `Se excluyeron ${holidayCount} días festivos.` : ''} A la espera de aprobación.`,
             vacationRequest
         });
     } catch (err) {
