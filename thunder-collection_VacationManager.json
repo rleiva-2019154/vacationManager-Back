@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "VacationManager",
-    "dateExported": "2024-09-20T20:22:19.739Z",
+    "dateExported": "2024-09-20T23:13:58.084Z",
     "version": "1.1",
     "folders": [
         {
@@ -255,11 +255,11 @@
             "method": "POST",
             "sortNum": 50000,
             "created": "2024-09-20T15:37:24.880Z",
-            "modified": "2024-09-20T15:58:37.009Z",
+            "modified": "2024-09-20T22:56:19.438Z",
             "headers": [
                 {
                     "name": "Authorization",
-                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NmU4YTg3OTMzNGNjOGUzYTI2NmJlMDEiLCJlbWFpbCI6Im9zdWF6b0BnbWFpbC5jb20iLCJpYXQiOjE3MjY4NDc1NzYsImV4cCI6MTcyNjg1ODM3Nn0.yWzSsCa515a3dYMNWWVnZ0ks0bGV9zxF-nzOcu-lEvk"
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NmU4YTg3OTMzNGNjOGUzYTI2NmJlMDEiLCJlbWFpbCI6Im9zdWF6b0BnbWFpbC5jb20iLCJpYXQiOjE3MjY4NzI5NTgsImV4cCI6MTcyNjg4Mzc1OH0.84kd4QUHDB7spqC3rq9pgy4OSC87cnnR-K5KBrlCA0I"
                 }
             ],
             "params": [],
@@ -269,7 +269,7 @@
                 "form": [
                     {
                         "name": "uid",
-                        "value": "66e8a879334cc8e3a266be01"
+                        "value": "66ed99e8be998ae1837b7d22"
                     },
                     {
                         "name": "startTime",
@@ -689,6 +689,34 @@
             "sortNum": 230000,
             "created": "2024-09-20T15:38:28.896Z",
             "modified": "2024-09-20T19:10:19.741Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "a4a5fedf-5489-43ef-a6ef-d9a2ee3b092c",
+            "colId": "01995028-6d4e-4d32-88e3-2fed47f5bb44",
+            "containerId": "1fe9d5b7-949e-4edc-ad07-44a9c2015c33",
+            "name": "Get User Vacation",
+            "url": "vacations/getUserVacationRequests/66ed99e8be998ae1837b7d22",
+            "method": "GET",
+            "sortNum": 280000,
+            "created": "2024-09-20T22:52:59.108Z",
+            "modified": "2024-09-20T22:56:34.108Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "e6a2f55a-3abb-4623-a7fd-fea55ab927f1",
+            "colId": "01995028-6d4e-4d32-88e3-2fed47f5bb44",
+            "containerId": "1fe9d5b7-949e-4edc-ad07-44a9c2015c33",
+            "name": "Get Status",
+            "url": "vacations/getVacationRequestStatus/66e8a855334cc8e3a266bdff/66edd59b17184d0f8e25d7df",
+            "method": "GET",
+            "sortNum": 290000,
+            "created": "2024-09-20T23:08:35.782Z",
+            "modified": "2024-09-20T23:12:00.520Z",
             "headers": [],
             "params": [],
             "tests": []

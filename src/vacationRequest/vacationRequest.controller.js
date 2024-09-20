@@ -257,4 +257,33 @@ export const getUserVacationRequests = async (req, res) => {
     }
 };
 
+export const getVacationRequestStatus = async (req, res) => {
+    try {
+        const { uid, requestId } = req.params;  // Obtener el ID del usuario y el ID de la solicitud desde los parámetros
+
+        // Verificar si el usuario existe
+        const user = await User.findById(uid);
+        if (!user) {
+            return res.status(404).json({ message: 'Usuario no encontrado' });
+        }
+
+        // Buscar la solicitud de vacaciones por ID y UID
+        const vacationRequest = await vacationRequestModel.findOne({ _id: requestId, uid: user._id });
+        
+        // Verificar si la solicitud existe
+        if (!vacationRequest) {
+            return res.status(404).json({ message: 'Solicitud de vacaciones no encontrada.' });
+        }
+
+        // Devolver el estado de la solicitud
+        return res.status(200).json({
+            message: 'Estado de la solicitud obtenido correctamente.',
+            requestId: vacationRequest._id,
+            status: vacationRequest.status
+        });
+    } catch (err) {
+        console.error('Error al obtener el estado de la solicitud', err);
+        return res.status(500).json({ message: 'Error al obtener el estado de la solicitud', err });
+    }
+};
 
