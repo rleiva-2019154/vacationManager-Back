@@ -17,14 +17,27 @@ export const addVacations = async (req, res) => {
         const start = new Date(startTime);
         const end = new Date(endTime);
 
-        // Verificar que la fecha de inicio sea anterior a la fecha de fin
+        // Verificar que la fecha de inicio sea anterior o igual a la fecha de fin
         if (end < start) {
-            return res.status(400).json({ message: 'La fecha de fin debe ser posterior a la fecha de inicio' });
+            return res.status(400).json({ message: 'La fecha de fin debe ser posterior o igual a la fecha de inicio' });
         }
 
-        // Calcular el número de días solicitados de manera inclusiva (contando ambos extremos)
-        const timeDiff = Math.abs(end.getTime() - start.getTime());
-        let daysRequested = Math.ceil(timeDiff / (1000 * 3600 * 24)) + 1;  // Sumar 1 para incluir el día de inicio y fin
+        // Calcular el número de días solicitados, excluyendo fines de semana
+        let daysRequested = 0;
+        let currentDate = new Date(start);
+
+        // Recorrer todos los días desde la fecha de inicio hasta la fecha de fin (incluidos ambos extremos)
+        while (currentDate <= end) {
+            const dayOfWeek = currentDate.getDay();  // Obtener el día de la semana (0 = Domingo, 6 = Sábado)
+            
+            // Solo contar días laborables (de lunes a viernes)
+            if (dayOfWeek !== 0 && dayOfWeek !== 6) {
+                daysRequested++;
+            }
+
+            // Avanzar al siguiente día
+            currentDate.setDate(currentDate.getDate() + 1);
+        }
 
         // Obtener los días festivos dentro del rango de fechas solicitadas
         const holidays = await Holiday.find({
@@ -38,12 +51,25 @@ export const addVacations = async (req, res) => {
         const holidayCount = holidays.length;
         daysRequested -= holidayCount;  // Restar la cantidad de días festivos encontrados
 
+        // Incluir el último día manualmente si cae en día laborable
+        const lastDayOfWeek = end.getDay();
+        if (lastDayOfWeek !== 0 && lastDayOfWeek !== 6 && !holidays.some(holiday => holiday.date.getTime() === end.getTime())) {
+            daysRequested++;  // Sumar 1 si el último día es un día laborable
+        }
+
+        // Verificar si el usuario tiene suficientes días de vacaciones disponibles
+        if (user.vacationDaysAvailable < daysRequested) {
+            return res.status(400).json({ 
+                message: `El usuario no tiene suficientes días de vacaciones disponibles. Días solicitados: ${daysRequested}, días disponibles: ${user.vacationDaysAvailable}`
+            });
+        }
+
         // Crear nueva solicitud de vacaciones
         const vacationRequest = new vacationRequestModel({
             uid: user._id,
             startTime: start,
             endTime: end,
-            totalDaysRequested: daysRequested,  // Asignar los días calculados (excluyendo festivos)
+            totalDaysRequested: daysRequested,  // Asignar los días calculados (excluyendo festivos y fines de semana)
             comments: comments || '',
             status: 'Pendiente'  // El estado inicial es 'Pendiente'
         });
