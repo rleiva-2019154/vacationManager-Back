@@ -227,3 +227,34 @@ export const getAvailableVacationDays = async (req, res) => {
         return res.status(500).json({ message: 'No se pudo obtener los días de vacaciones disponibles, intenta de nuevo más tarde', err });
     }
 };
+
+export const getUserVacationRequests = async (req, res) => {
+    try {
+        const { uid } = req.params;  // Obtener el ID del usuario desde los parámetros de la URL
+
+        // Verificar si el usuario existe
+        const user = await User.findById(uid);
+        if (!user) {
+            return res.status(404).json({ message: 'Usuario no encontrado' });
+        }
+
+        // Buscar todas las solicitudes de vacaciones que pertenezcan a este usuario
+        const vacationRequests = await vacationRequestModel.find({ uid: user._id });
+
+        // Si no hay solicitudes, devolver un mensaje adecuado
+        if (!vacationRequests.length) {
+            return res.status(404).json({ message: 'No se encontraron solicitudes de vacaciones para este usuario.' });
+        }
+
+        // Devolver las solicitudes de vacaciones encontradas
+        return res.status(200).json({
+            message: 'Solicitudes de vacaciones obtenidas correctamente.',
+            vacationRequests
+        });
+    } catch (err) {
+        console.error('Error al obtener las solicitudes de vacaciones del usuario', err);
+        return res.status(500).json({ message: 'Error al obtener las solicitudes de vacaciones del usuario', err });
+    }
+};
+
+
