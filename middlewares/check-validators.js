@@ -94,3 +94,47 @@ export const updateHolidayValidator = [
     .isDate({ format: 'YYYY-MM-DD' }).withMessage("La fecha de inicio debe estar en un formato válido"),
     check('name', "No puedes mandar campos vacios").not().isEmpty(),
 ]
+
+export const addTeamValidator = [
+    check('name', "El nombre del equipo es obligatorio")
+        .not().isEmpty()
+        .withMessage('El nombre del equipo no puede estar vacío'),
+    check('description')
+        .optional()
+        .isLength({ max: 500 })
+        .withMessage("La descripción no puede exceder los 500 caracteres"),
+    check('members')
+        .optional()
+        .isArray().withMessage('Los miembros deben ser un arreglo de IDs')
+        .custom((value) => {
+            if (!value.every(id => id.match(/^[0-9a-fA-F]{24}$/))) {
+                throw new Error('Todos los IDs de los miembros deben ser ObjectIds válidos');
+            }
+            return true;
+        }),
+    check('boss', "El jefe del equipo es obligatorio")
+        .not().isEmpty()
+        .isMongoId()
+        .withMessage('El jefe debe ser un ObjectId válido'),
+    check('project')
+        .optional()
+        .isLength({ max: 200 })
+        .withMessage("El nombre del proyecto no puede exceder los 200 caracteres"),
+    validateInput
+];
+
+export const editTeamValidator = [
+    check('name')
+        .optional()  // El nombre es opcional al editar
+        .notEmpty().withMessage('El nombre del equipo no puede estar vacío'),
+    check('description')
+        .optional()
+        .isLength({ max: 500 })
+        .withMessage("La descripción no puede exceder los 500 caracteres"),
+    check('project')
+        .optional()
+        .isLength({ max: 200 })
+        .withMessage("El nombre del proyecto no puede exceder los 200 caracteres"),
+
+    validateInput
+];
