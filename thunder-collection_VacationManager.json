@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "VacationManager",
-    "dateExported": "2024-09-20T19:13:04.950Z",
+    "dateExported": "2024-09-20T20:22:19.739Z",
     "version": "1.1",
     "folders": [
         {
@@ -214,11 +214,11 @@
             "method": "POST",
             "sortNum": 40000,
             "created": "2024-09-20T15:37:24.866Z",
-            "modified": "2024-09-20T15:57:19.373Z",
+            "modified": "2024-09-20T20:14:22.111Z",
             "headers": [
                 {
                     "name": "Authorization",
-                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NmU4YTg1NTMzNGNjOGUzYTI2NmJkZmYiLCJlbWFpbCI6InJsZWl2YUBnbWFpbC5jb20iLCJpYXQiOjE3MjY4NDc1NTMsImV4cCI6MTcyNjg1ODM1M30.2qcs4iyTaeWqu5W-Enj0rqoRcWeR3bQOd1KjN1bXGrI"
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NmU4YTg1NTMzNGNjOGUzYTI2NmJkZmYiLCJlbWFpbCI6InJsZWl2YUBnbWFpbC5jb20iLCJpYXQiOjE3MjY4NjIyMTAsImV4cCI6MTcyNjg3MzAxMH0.uCwSMYikmXCakGxbZY27qxyHrKrwbltfIipEiJDlG84"
                 }
             ],
             "params": [],
@@ -236,7 +236,7 @@
                     },
                     {
                         "name": "endTime",
-                        "value": "2024-10-25"
+                        "value": "2024-10-29"
                     },
                     {
                         "name": "comments",
@@ -292,15 +292,15 @@
             "colId": "01995028-6d4e-4d32-88e3-2fed47f5bb44",
             "containerId": "1fe9d5b7-949e-4edc-ad07-44a9c2015c33",
             "name": "Approve Boss",
-            "url": "vacations/approveVacationBoss/66e8cf853efa79c28481f0cd",
+            "url": "vacations/approveVacationBoss/66edd79eade883ad3354cd48",
             "method": "PUT",
             "sortNum": 60000,
             "created": "2024-09-20T15:37:24.868Z",
-            "modified": "2024-09-20T15:59:18.887Z",
+            "modified": "2024-09-20T20:15:04.167Z",
             "headers": [
                 {
                     "name": "Authorization",
-                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NmU3Y2QwODhkOThkNDczY2Q3YWZkMzAiLCJlbWFpbCI6ImFkbWluQGV4YW1wbGUuY29tIiwiaWF0IjoxNzI2ODQ3MjYxLCJleHAiOjE3MjY4NTgwNjF9.KjkUU0jek9ZspAmP5jeyzz9I5CjSNqEZh4ZUxZuzlWU"
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NmU3Y2QwODhkOThkNDczY2Q3YWZkMzAiLCJlbWFpbCI6ImFkbWluQGV4YW1wbGUuY29tIiwiaWF0IjoxNzI2ODYzMjk0LCJleHAiOjE3MjY4NzQwOTR9.Vrx_ORauSkzwwdWHI1GntvRtX59wTD3lXuxDcBqoSWs"
                 }
             ],
             "params": [],
@@ -315,11 +315,11 @@
             "method": "POST",
             "sortNum": 90000,
             "created": "2024-09-20T15:37:24.871Z",
-            "modified": "2024-09-20T15:54:00.962Z",
+            "modified": "2024-09-20T20:00:55.843Z",
             "headers": [
                 {
                     "name": "Authorization",
-                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NmU3Y2QwODhkOThkNDczY2Q3YWZkMzAiLCJlbWFpbCI6ImFkbWluQGV4YW1wbGUuY29tIiwiaWF0IjoxNzI2ODQ3MjYxLCJleHAiOjE3MjY4NTgwNjF9.KjkUU0jek9ZspAmP5jeyzz9I5CjSNqEZh4ZUxZuzlWU"
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NmU3Y2QwODhkOThkNDczY2Q3YWZkMzAiLCJlbWFpbCI6ImFkbWluQGV4YW1wbGUuY29tIiwiaWF0IjoxNzI2ODYyNDQ1LCJleHAiOjE3MjY4NzMyNDV9.5zoDsO5GCVsIZNKCnZP6IRIy0sI7NyTe8NqiLvQwS1I"
                 }
             ],
             "params": [],
@@ -329,11 +329,11 @@
                 "form": [
                     {
                         "name": "date",
-                        "value": "2024-10-31"
+                        "value": "2024-10-23"
                     },
                     {
                         "name": "name",
-                        "value": "Halloween"
+                        "value": "Prueba"
                     }
                 ]
             },
