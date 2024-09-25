@@ -11,7 +11,7 @@ import {
     getTeamById,
     getTeamMembersWithVacationDays
 } from "./team.controller.js"
-import { isAdmin, isBoss, isBossOrEmployee} from "../../middlewares/role-auth.js";
+import { isAdmin, isBoss, isBossOrEmployee, isAdminOrBoss} from "../../middlewares/role-auth.js";
 import { 
     addTeamValidator, 
     editTeamValidator
@@ -22,13 +22,13 @@ const api = Router()
 
 api.post('/createTeam', validateJwt, isAdmin, addTeamValidator, createTeam)
 
-api.put('/addMemberToTeam/:teamId', validateJwt, isAdmin, addMemberToTeam)
+api.put('/addMemberToTeam/:teamId', validateJwt, isAdminOrBoss, addMemberToTeam)
 
-api.put('/editTeam/:teamId', validateJwt, isAdmin, editTeamValidator, editTeam)
+api.put('/editTeam/:teamId', validateJwt, isAdminOrBoss, editTeamValidator, editTeam)
 
 api.put('/editTeamBoss/:teamId', validateJwt, isBoss, editTeamBoss)
 
-api.delete('/removeMemberFromTeam/:teamId', validateJwt, isAdmin, removeMemberFromTeam)
+api.delete('/removeMemberFromTeam/:teamId', validateJwt, isAdminOrBoss, removeMemberFromTeam)
 
 api.delete('/deleteTeam/:teamId', validateJwt, isAdmin,deleteTeam)
 
