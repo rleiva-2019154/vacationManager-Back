@@ -279,7 +279,8 @@ export const getVacationRequestStatus = async (req, res) => {
         return res.status(200).json({
             message: 'Estado de la solicitud obtenido correctamente.',
             requestId: vacationRequest._id,
-            status: vacationRequest.status
+            status: vacationRequest.status,
+            days: vacationRequest.totalDaysRequested
         });
     } catch (err) {
         console.error('Error al obtener el estado de la solicitud', err);

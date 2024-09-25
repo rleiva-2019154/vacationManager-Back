@@ -53,10 +53,35 @@ export const addMemberToTeam = async (req, res) => {
             return res.status(404).json({ message: 'Uno o más usuarios no encontrados' });
         }
 
+        // Validar si alguno de los usuarios es un BOSS
+        const bosses = validUsers.filter(user => user.role === 'BOSS');
+        if (bosses.length > 0) {
+            const bossNames = bosses.map(boss => boss.name).join(', ');
+            return res.status(400).json({ message: `No se pueden agregar usuarios con rol de BOSS: ${bossNames}` });
+        }
+
+        // Verificar si los usuarios ya son miembros del equipo
         const alreadyMembers = team.members.filter(memberId => userIds.includes(memberId.toString()));
         if (alreadyMembers.length > 0) {
             return res.status(400).json({ 
                 message: `Algunos usuarios ya son miembros del equipo: ${alreadyMembers.join(', ')}` 
+            });
+        }
+
+        // Verificar si alguno de los usuarios ya pertenece a otro equipo
+        const usersInOtherTeams = await Team.find({
+            _id: { $ne: teamId },  // Excluir el equipo actual
+            members: { $in: userIds }  // Buscar usuarios en otros equipos
+        }).populate('members', 'name').populate('boss', 'name');
+
+        if (usersInOtherTeams.length > 0) {
+            const conflictMessages = usersInOtherTeams.map(t => {
+                const conflictedUsers = t.members.filter(member => userIds.includes(member._id.toString()));
+                return `${conflictedUsers.map(u => u.name).join(', ')} ya está en el equipo ${t.name} bajo el jefe ${t.boss.name}`;
+            });
+
+            return res.status(400).json({
+                message: `Algunos usuarios ya están en otros equipos: ${conflictMessages.join('; ')}`
             });
         }
 
@@ -76,7 +101,6 @@ export const addMemberToTeam = async (req, res) => {
         return res.status(500).json({ message: 'Error al agregar usuarios al equipo', error });
     }
 };
-
 
 export const editTeam = async (req, res) => {
     try {
