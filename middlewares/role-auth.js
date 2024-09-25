@@ -53,3 +53,20 @@ export const isBossOrEmployee = async (req, res, next) => {
         return res.status(403).send({ message: 'Unauthorized role' });
     }
 };
+
+export const isAdminOrBoss = async (req, res, next) => {
+    try {
+        const { user } = req;  // Asumiendo que el usuario está en `req.user` después de la autenticación
+
+        // Verificar si el usuario existe y si su rol es ADMIN o BOSS
+        if (!user || (user.role !== 'ADMIN' && user.role !== 'BOSS')) {
+            return res.status(403).json({ message: `No tienes acceso. Rol actual: ${user ? user.role : 'Ninguno'}` });
+        }
+
+        // Si es ADMIN o BOSS, permitir que continúe
+        next();
+    } catch (error) {
+        console.error('Error al validar el rol', error);
+        return res.status(500).json({ message: 'Error al validar el rol', error });
+    }
+};
