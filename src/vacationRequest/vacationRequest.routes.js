@@ -27,5 +27,5 @@ api.get('/getDays/:uid', validateJwt, isBossOrEmployee, getAvailableVacationDays
 
 api.get('/getUserVacationRequests/:uid', validateJwt, isBossOrEmployee, getUserVacationRequests)
 
-api. get('/getVacationRequestStatus/:uid/:requestId', getVacationRequestStatus)
+api. get('/getVacationRequestStatus/:uid/:requestId', validateJwt, isBossOrEmployee, getVacationRequestStatus)
 export default api
