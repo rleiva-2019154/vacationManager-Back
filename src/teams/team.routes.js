@@ -36,7 +36,7 @@ api.get('/getTeams', validateJwt, isAdmin, getTeams)
 
 api.get('/getTeamById/:teamId', validateJwt, isAdmin, getTeamById)
 
-api.get('/getTeamMembersWithVacationDays/:teamId', getTeamMembersWithVacationDays)
+api.get('/getTeamMembersWithVacationDays/:teamId', validateJwt, isAdminOrBoss, getTeamMembersWithVacationDays)
 
 export default api
 
