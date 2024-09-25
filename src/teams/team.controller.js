@@ -299,3 +299,40 @@ export const getTeamById = async (req, res) => {
         return res.status(500).json({ message: 'Error al obtener el equipo', error });
     }
 };
+
+export const getTeamMembersWithVacationDays = async (req, res) => {
+    try {
+        const { teamId } = req.params;  // Obtener el ID del equipo desde los parámetros de la URL
+
+        // Verificar si el teamId es válido
+        if (!teamId || !mongoose.Types.ObjectId.isValid(teamId)) {
+            return res.status(400).json({ message: 'ID del equipo inválido' });
+        }
+
+        // Buscar el equipo por ID y popular los miembros
+        const team = await Team.findById(teamId)
+            .populate({
+                path: 'members',  // Popular los miembros
+                select: 'name email vacationDaysAvailable'  // Seleccionar los campos name, email, y vacationDaysAvailable
+            });
+
+        // Verificar si el equipo fue encontrado
+        if (!team) {
+            return res.status(404).json({ message: 'Equipo no encontrado' });
+        }
+
+        // Si el equipo no tiene miembros, devolver mensaje adecuado
+        if (!team.members || team.members.length === 0) {
+            return res.status(404).json({ message: 'No hay empleados en este equipo' });
+        }
+
+        // Devolver los miembros con sus días de vacaciones
+        return res.status(200).json({
+            message: 'Lista de empleados obtenida correctamente',
+            members: team.members
+        });
+    } catch (error) {
+        console.error('Error al obtener la lista de empleados y días de vacaciones', error);
+        return res.status(500).json({ message: 'Error al obtener la lista de empleados y días de vacaciones', error });
+    }
+};
