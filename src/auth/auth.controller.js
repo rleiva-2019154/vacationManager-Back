@@ -149,3 +149,18 @@ export const login = async (req, res) => {
         return res.status(500).send({ message: 'Error al iniciar sesión, intenta de nuevo más tarde', err });
     }
 };
+
+export const getUsers = async (req, res) => {
+    try {
+        const users = await User.find({}, 'name surname email role');
+
+        return res.json({
+            msg: 'Usuarios obtenidos correctamente',
+            users: users
+        });
+    } catch (err) {
+        console.error('Error al obtener los usuarios', err);
+        return res.status(500).json({ msg: 'Error al obtener los usuarios', error: err.message });
+    }
+};
+
