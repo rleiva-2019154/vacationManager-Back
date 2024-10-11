@@ -288,3 +288,30 @@ export const getVacationRequestStatus = async (req, res) => {
     }
 };
 
+export const getBossVacationRequests = async (req, res) => {
+    try {
+        // Obtenemos a los usuarios que son jefes
+        const bosses = await User.find({ role: 'BOSS' });
+
+        if (!bosses.length) {
+            return res.status(404).json({ message: 'No se encontraron jefes con solicitudes.' });
+        }
+
+        // Obtenemos las solicitudes de vacaciones de los jefes
+        const bossVacationRequests = await vacationRequestModel.find({
+            uid: { $in: bosses.map(boss => boss._id) }
+        }).populate('uid', 'name surname email');
+
+        if (!bossVacationRequests.length) {
+            return res.status(404).json({ message: 'No se encontraron solicitudes de vacaciones para los jefes.' });
+        }
+
+        return res.status(200).json({
+            message: 'Solicitudes de vacaciones obtenidas correctamente.',
+            vacationRequests: bossVacationRequests
+        });
+    } catch (err) {
+        console.error('Error al obtener las solicitudes de vacaciones de los jefes', err);
+        return res.status(500).json({ message: 'Error al obtener las solicitudes de vacaciones de los jefes', err });
+    }
+};

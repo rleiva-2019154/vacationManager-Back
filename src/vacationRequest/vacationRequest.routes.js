@@ -6,7 +6,8 @@ import {
     refuseVacation,
     getAvailableVacationDays,
     getUserVacationRequests,
-    getVacationRequestStatus
+    getVacationRequestStatus,
+    getBossVacationRequests
 } from "./vacationRequest.controller.js"
 import { isAdmin, isBoss, isEmployee, isBossOrEmployee } from "../../middlewares/role-auth.js";
 import { addVacationRequestValidator } from "../../middlewares/check-validators.js";
@@ -28,4 +29,7 @@ api.get('/getDays/:uid', validateJwt, isBossOrEmployee, getAvailableVacationDays
 api.get('/getUserVacationRequests/:uid', validateJwt, isBossOrEmployee, getUserVacationRequests)
 
 api. get('/getVacationRequestStatus/:uid/:requestId', validateJwt, isBossOrEmployee, getVacationRequestStatus)
+
+api.get('/getBossVacationRequests', validateJwt, isAdmin, getBossVacationRequests);
+
 export default api
