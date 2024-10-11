@@ -4,7 +4,7 @@ import User from '../users/user.model.js';
 
 export const createTeam = async (req, res) => {
     try {
-        const { name, members, boss, project } = req.body;
+        const { name, members, boss, project, description  } = req.body;
 
         // Crear el nuevo equipo
         const team = new Team({
@@ -12,7 +12,7 @@ export const createTeam = async (req, res) => {
             members,  // Directamente el arreglo de ObjectIds
             boss,  // ObjectId del jefe
             project,
-            description
+            description 
         });
 
         // Guardar el equipo en la base de datos
