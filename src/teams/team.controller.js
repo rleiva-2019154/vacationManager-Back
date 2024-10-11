@@ -11,7 +11,8 @@ export const createTeam = async (req, res) => {
             name,
             members,  // Directamente el arreglo de ObjectIds
             boss,  // ObjectId del jefe
-            project
+            project,
+            description
         });
 
         // Guardar el equipo en la base de datos
