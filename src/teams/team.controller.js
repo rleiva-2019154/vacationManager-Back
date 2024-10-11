@@ -334,8 +334,9 @@ export const getTeamMembersWithVacationDays = async (req, res) => {
             return res.status(400).json({ message: 'ID del equipo inválido' });
         }
 
-        // Buscar el equipo por ID y popular los miembros
+        // Buscar el equipo por ID y popular los miembros y el jefe
         const team = await Team.findById(teamId)
+            .populate('boss', 'name email vacationDaysAvailable')  // También popular el jefe
             .populate({
                 path: 'members',  // Popular los miembros
                 select: 'name email vacationDaysAvailable'  // Seleccionar los campos name, email, y vacationDaysAvailable
@@ -351,10 +352,15 @@ export const getTeamMembersWithVacationDays = async (req, res) => {
             return res.status(404).json({ message: 'No hay empleados en este equipo' });
         }
 
-        // Devolver los miembros con sus días de vacaciones
+        // Devolver el equipo junto con el jefe y los miembros con sus días de vacaciones
         return res.status(200).json({
             message: 'Lista de empleados obtenida correctamente',
-            members: team.members
+            team: {
+                boss: team.boss,
+                members: team.members,
+                project: team.project,
+                description: team.description,
+            }
         });
     } catch (error) {
         console.error('Error al obtener la lista de empleados y días de vacaciones', error);
