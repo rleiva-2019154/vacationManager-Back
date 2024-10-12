@@ -64,8 +64,12 @@ export const addMemberToTeam = async (req, res) => {
         // Verificar si los usuarios ya son miembros del equipo
         const alreadyMembers = team.members.filter(memberId => userIds.includes(memberId.toString()));
         if (alreadyMembers.length > 0) {
+            // Popular los nombres de los miembros existentes
+            const membersInTeam = await User.find({ _id: { $in: alreadyMembers } }, 'name');
+            const memberNames = membersInTeam.map(member => member.name).join(', ');
+
             return res.status(400).json({ 
-                message: `Algunos usuarios ya son miembros del equipo: ${alreadyMembers.join(', ')}` 
+                message: `Algunos usuarios ya son miembros del equipo '${team.name}': ${memberNames}` 
             });
         }
 
@@ -102,6 +106,7 @@ export const addMemberToTeam = async (req, res) => {
         return res.status(500).json({ message: 'Error al agregar usuarios al equipo', error });
     }
 };
+
 
 export const editTeam = async (req, res) => {
     try {
