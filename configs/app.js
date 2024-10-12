@@ -29,7 +29,13 @@ export class ExpressServer {
     }
 
     middlewares() {
-        this.app.use(cors());
+        this.app.use(cors({
+            origin: 'http://localhost:5173',  // Permitir solicitudes de este origen
+            methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],  // Permitir estos métodos
+            allowedHeaders: ['Content-Type', 'Authorization'],  // Permitir estos encabezados
+            credentials: true,  // Permitir credenciales
+        }));
+        
         this.app.use(express.urlencoded({ extended: false }));
         this.app.use(express.json());
         this.app.use(helmet());
@@ -37,7 +43,6 @@ export class ExpressServer {
     }
 
     routes() {
-        this.app.options('*', cors());
         this.app.use(`${this.urlBase}/auth`, authRoutes);
         this.app.use(`${this.urlBase}/vacations`, vacationsRoutes);
         this.app.use(`${this.urlBase}/holidays`, holidayRoutes);
