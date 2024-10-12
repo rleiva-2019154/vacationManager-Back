@@ -28,7 +28,11 @@ export class ExpressServer {
         } 
     }
     middlewares(){
-        this.app.use(cors())
+        this.app.use(cors({
+            origin: 'http://localhost:5173/',  
+            methods: ['GET', 'POST', 'PUT', 'DELETE'],  
+            credentials: true,  
+        }))
         this.app.use(express.urlencoded({extended: false}))
         this.app.use(express.json());
         this.app.use(helmet())
