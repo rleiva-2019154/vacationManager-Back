@@ -64,12 +64,8 @@ export const addMemberToTeam = async (req, res) => {
         // Verificar si los usuarios ya son miembros del equipo
         const alreadyMembers = team.members.filter(memberId => userIds.includes(memberId.toString()));
         if (alreadyMembers.length > 0) {
-            // Popular los nombres de los miembros existentes
-            const membersInTeam = await User.find({ _id: { $in: alreadyMembers } }, 'name');
-            const memberNames = membersInTeam.map(member => member.name).join(', ');
-
             return res.status(400).json({ 
-                message: `Algunos usuarios ya son miembros del equipo '${team.name}': ${memberNames}` 
+                message: `Algunos usuarios ya son miembros del equipo: ${alreadyMembers.join(', ')}` 
             });
         }
 
@@ -106,7 +102,6 @@ export const addMemberToTeam = async (req, res) => {
         return res.status(500).json({ message: 'Error al agregar usuarios al equipo', error });
     }
 };
-
 
 export const editTeam = async (req, res) => {
     try {
@@ -203,19 +198,19 @@ export const editTeamBoss = async (req, res) => {
     }
 };
 
-export const removeMembersFromTeam = async (req, res) => {
+export const removeMemberFromTeam = async (req, res) => {
     try {
         const { teamId } = req.params;  // Obtener el ID del equipo desde los parámetros de la URL
-        const { userIds } = req.body;  // Obtener los IDs de los usuarios que se van a eliminar
+        const { userId } = req.body;  // Obtener el ID del usuario que se va a eliminar
 
         // Verificar si el teamId es válido
         if (!teamId || !mongoose.Types.ObjectId.isValid(teamId)) {
             return res.status(400).json({ message: 'ID del equipo inválido' });
         }
 
-        // Verificar que userIds sea un array y que todos los IDs sean válidos
-        if (!userIds || !Array.isArray(userIds) || !userIds.every(id => mongoose.Types.ObjectId.isValid(id))) {
-            return res.status(400).json({ message: 'IDs de usuarios inválidos o formato incorrecto' });
+        // Verificar si el userId es válido
+        if (!userId || !mongoose.Types.ObjectId.isValid(userId)) {
+            return res.status(400).json({ message: 'ID del usuario inválido' });
         }
 
         // Buscar el equipo por ID
@@ -224,8 +219,13 @@ export const removeMembersFromTeam = async (req, res) => {
             return res.status(404).json({ message: 'Equipo no encontrado' });
         }
 
-        // Filtrar los miembros para eliminar los usuarios seleccionados
-        team.members = team.members.filter(memberId => !userIds.includes(memberId.toString()));
+        // Verificar si el usuario está en el equipo
+        if (!team.members.includes(userId)) {
+            return res.status(400).json({ message: 'El usuario no es miembro del equipo' });
+        }
+
+        // Eliminar al usuario del equipo
+        team.members = team.members.filter(memberId => memberId.toString() !== userId);
 
         // Guardar el equipo actualizado
         await team.save();
@@ -236,12 +236,12 @@ export const removeMembersFromTeam = async (req, res) => {
             .populate('members', 'name email');
 
         return res.status(200).json({
-            message: 'Miembro(s) eliminado(s) del equipo correctamente',
+            message: 'Usuario eliminado del equipo correctamente',
             team: populatedTeam
         });
     } catch (error) {
-        console.error('Error al eliminar usuarios del equipo', error);
-        return res.status(500).json({ message: 'Error al eliminar usuarios del equipo', error });
+        console.error('Error al eliminar usuario del equipo', error);
+        return res.status(500).json({ message: 'Error al eliminar usuario del equipo', error });
     }
 };
 
