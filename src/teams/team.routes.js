@@ -26,7 +26,7 @@ api.put('/addMemberToTeam/:teamId', validateJwt, isAdminOrBoss, addMemberToTeam)
 
 api.put('/editTeam/:teamId', validateJwt, isAdminOrBoss, editTeamValidator, editTeam)
 
-api.put('/editTeamBoss/:teamId', validateJwt, isBoss, editTeamBoss)
+api.put('/editTeamBoss/:teamId', validateJwt, isAdmin, editTeamBoss)
 
 api.delete('/removeMemberFromTeam/:teamId', validateJwt, isAdminOrBoss, removeMemberFromTeam)
 
