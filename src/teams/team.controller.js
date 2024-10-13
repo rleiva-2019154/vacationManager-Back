@@ -54,14 +54,17 @@ export const addMemberToTeam = async (req, res) => {
             return res.status(404).json({ message: 'Uno o más usuarios no encontrados' });
         }
 
+        // Validar si alguno de los usuarios es un BOSS
         const bosses = validUsers.filter(user => user.role === 'BOSS');
         if (bosses.length > 0) {
             const bossNames = bosses.map(boss => boss.name).join(', ');
             return res.status(400).json({ message: `No se pueden agregar usuarios con rol de BOSS: ${bossNames}` });
         }
 
+        // Verificar si los usuarios ya son miembros del equipo
         const alreadyMembers = team.members.filter(memberId => userIds.includes(memberId.toString()));
         if (alreadyMembers.length > 0) {
+            // Popular los nombres de los miembros existentes
             const membersInTeam = await User.find({ _id: { $in: alreadyMembers } }, 'name');
             const memberNames = membersInTeam.map(member => member.name).join(', ');
 
@@ -69,40 +72,6 @@ export const addMemberToTeam = async (req, res) => {
                 message: `Algunos usuarios ya son miembros del equipo '${team.name}': ${memberNames}` 
             });
         }
-
-        // Verificar si alguno de los usuarios ya pertenece a otro equipo
-        const usersInOtherTeams = await Team.find({
-            _id: { $ne: teamId },  // Excluir el equipo actual
-            members: { $in: userIds }  // Buscar usuarios en otros equipos
-        }).populate('members', 'name').populate('boss', 'name');
-
-        if (usersInOtherTeams.length > 0) {
-            const conflictMessages = usersInOtherTeams.map(t => {
-                const conflictedUsers = t.members.filter(member => userIds.includes(member._id.toString()));
-                return `${conflictedUsers.map(u => u.name).join(', ')} ya está en el equipo ${t.name} bajo el jefe ${t.boss.name}`;
-            });
-
-            return res.status(400).json({
-                message: `Algunos usuarios ya están en otros equipos: ${conflictMessages.join('; ')}`
-            });
-        }
-
-        // Agregar los nuevos miembros
-        team.members.push(...userIds);
-        await team.save();
-
-        // Popular los miembros para mostrar nombre y email en lugar de ID
-        const populatedTeam = await Team.findById(teamId).populate('members', 'name email');
-
-        return res.status(200).json({ 
-            message: 'Usuarios agregados al equipo correctamente', 
-            team: populatedTeam 
-        });
-    } catch (error) {
-        console.error('Error al agregar usuarios al equipo', error);
-        return res.status(500).json({ message: 'Error al agregar usuarios al equipo', error });
-    }
-};
 
         // Verificar si alguno de los usuarios ya pertenece a otro equipo
         const usersInOtherTeams = await Team.find({
