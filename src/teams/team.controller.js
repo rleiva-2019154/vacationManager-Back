@@ -54,17 +54,14 @@ export const addMemberToTeam = async (req, res) => {
             return res.status(404).json({ message: 'Uno o más usuarios no encontrados' });
         }
 
-        // Validar si alguno de los usuarios es un BOSS
         const bosses = validUsers.filter(user => user.role === 'BOSS');
         if (bosses.length > 0) {
             const bossNames = bosses.map(boss => boss.name).join(', ');
             return res.status(400).json({ message: `No se pueden agregar usuarios con rol de BOSS: ${bossNames}` });
         }
 
-        // Verificar si los usuarios ya son miembros del equipo
         const alreadyMembers = team.members.filter(memberId => userIds.includes(memberId.toString()));
         if (alreadyMembers.length > 0) {
-            // Popular los nombres de los miembros existentes
             const membersInTeam = await User.find({ _id: { $in: alreadyMembers } }, 'name');
             const memberNames = membersInTeam.map(member => member.name).join(', ');
 
