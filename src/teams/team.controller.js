@@ -371,3 +371,37 @@ export const getTeamMembersWithVacationDays = async (req, res) => {
         return res.status(500).json({ message: 'Error al obtener la lista de empleados y días de vacaciones', error });
     }
 };
+
+export const getUserTeams = async (req, res) => {
+    try {
+        const { uid } = req.params; // Obtener el ID del usuario desde los parámetros de la URL
+
+        // Verificar si el usuario existe
+        const user = await User.findById(uid);
+        if (!user) {
+            return res.status(404).json({ message: 'Usuario no encontrado' });
+        }
+
+        // Buscar los equipos donde el usuario es miembro o jefe
+        const teams = await Team.find({
+            $or: [
+                { members: user._id }, // El usuario es miembro
+                { boss: user._id } // El usuario es jefe
+            ]
+        })
+        .populate('members', 'name email') // Poblamos los datos de los miembros
+        .populate('boss', 'name email'); // Poblamos los datos del jefe
+
+        if (!teams || teams.length === 0) {
+            return res.status(404).json({ message: 'El usuario no pertenece a ningún equipo.' });
+        }
+
+        return res.status(200).json({
+            message: 'Equipos obtenidos correctamente.',
+            teams
+        });
+    } catch (err) {
+        console.error('Error al obtener los equipos del usuario', err);
+        return res.status(500).json({ message: 'Error al obtener los equipos del usuario', err });
+    }
+};

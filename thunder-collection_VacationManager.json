@@ -1,49 +1,49 @@
 {
     "client": "Thunder Client",
     "collectionName": "VacationManager",
-    "dateExported": "2024-10-14T05:07:21.339Z",
+    "dateExported": "2024-10-14T16:55:15.383Z",
     "version": "1.1",
     "folders": [
         {
-            "_id": "78d67f02-0f6d-4428-acef-c25fe89b5415",
+            "_id": "32a4a47c-5618-48fe-a1c9-77c00cf2b8c1",
             "name": "Auth",
             "containerId": "",
-            "created": "2024-10-13T23:51:00.198Z",
+            "created": "2024-10-14T15:02:17.023Z",
             "sortNum": 10000
         },
         {
-            "_id": "6c404845-8f75-462a-acae-eb962fb9fe36",
+            "_id": "8fb0960a-23e0-46ef-bd70-612c6fea3128",
             "name": "Vacation Request",
             "containerId": "",
-            "created": "2024-10-13T23:51:00.199Z",
+            "created": "2024-10-14T15:02:17.024Z",
             "sortNum": 20000
         },
         {
-            "_id": "767c9d94-a955-42a6-b8ef-2fd6d693fec6",
+            "_id": "c96cac62-752f-4e49-b4c5-09bc666a2460",
             "name": "Holidays",
             "containerId": "",
-            "created": "2024-10-13T23:51:00.200Z",
+            "created": "2024-10-14T15:02:17.025Z",
             "sortNum": 30000
         },
         {
-            "_id": "d8a62046-7e4a-4904-a28c-8adf10902db3",
+            "_id": "d08281ac-13c9-4d64-ac78-5e3cc18279ff",
             "name": "Team",
             "containerId": "",
-            "created": "2024-10-13T23:51:00.201Z",
+            "created": "2024-10-14T15:02:17.026Z",
             "sortNum": 40000
         }
     ],
     "requests": [
         {
-            "_id": "a1e19e42-5bd1-47e8-bde0-b9a8231cbd5d",
-            "colId": "cd65443a-6bf4-4337-9144-d0b28a2f588c",
-            "containerId": "78d67f02-0f6d-4428-acef-c25fe89b5415",
+            "_id": "15985196-e671-4761-94aa-7fa869a22395",
+            "colId": "7f7ff7c2-3813-4b86-941f-90c42e20a575",
+            "containerId": "32a4a47c-5618-48fe-a1c9-77c00cf2b8c1",
             "name": "Login Admin",
             "url": "auth/login",
             "method": "POST",
             "sortNum": 10000,
-            "created": "2024-10-13T23:51:00.203Z",
-            "modified": "2024-10-13T23:51:00.203Z",
+            "created": "2024-10-14T15:02:17.029Z",
+            "modified": "2024-10-14T15:02:17.029Z",
             "headers": [],
             "params": [],
             "body": {
@@ -68,15 +68,15 @@
             "tests": []
         },
         {
-            "_id": "992d8c3f-90ce-4991-9ecc-1691f83d052f",
-            "colId": "cd65443a-6bf4-4337-9144-d0b28a2f588c",
-            "containerId": "78d67f02-0f6d-4428-acef-c25fe89b5415",
+            "_id": "fe4fa361-47cb-42c2-898b-cddbe1187831",
+            "colId": "7f7ff7c2-3813-4b86-941f-90c42e20a575",
+            "containerId": "32a4a47c-5618-48fe-a1c9-77c00cf2b8c1",
             "name": "Register",
             "url": "auth/register",
             "method": "POST",
             "sortNum": 15000,
-            "created": "2024-10-13T23:51:00.199Z",
-            "modified": "2024-10-13T23:51:00.199Z",
+            "created": "2024-10-14T15:02:17.025Z",
+            "modified": "2024-10-14T15:02:17.025Z",
             "headers": [],
             "params": [],
             "body": {
@@ -112,15 +112,15 @@
             "tests": []
         },
         {
-            "_id": "48b9234b-1456-46d2-a56f-3b156fe09b47",
-            "colId": "cd65443a-6bf4-4337-9144-d0b28a2f588c",
-            "containerId": "78d67f02-0f6d-4428-acef-c25fe89b5415",
+            "_id": "65327284-c0d3-4996-8c32-d6ed380e044d",
+            "colId": "7f7ff7c2-3813-4b86-941f-90c42e20a575",
+            "containerId": "32a4a47c-5618-48fe-a1c9-77c00cf2b8c1",
             "name": "Assign Role",
             "url": "auth/assignRole",
             "method": "POST",
             "sortNum": 17500,
-            "created": "2024-10-13T23:51:00.204Z",
-            "modified": "2024-10-13T23:51:00.204Z",
+            "created": "2024-10-14T15:02:17.030Z",
+            "modified": "2024-10-14T15:02:17.030Z",
             "headers": [
                 {
                     "name": "Authorization",
@@ -145,15 +145,15 @@
             "tests": []
         },
         {
-            "_id": "bd1992d9-e59d-41d7-996e-af67185f35d1",
-            "colId": "cd65443a-6bf4-4337-9144-d0b28a2f588c",
-            "containerId": "78d67f02-0f6d-4428-acef-c25fe89b5415",
+            "_id": "b208e9b4-b5a2-4483-9eb1-d5d6e1b00352",
+            "colId": "7f7ff7c2-3813-4b86-941f-90c42e20a575",
+            "containerId": "32a4a47c-5618-48fe-a1c9-77c00cf2b8c1",
             "name": "Login Boss",
             "url": "auth/login",
             "method": "POST",
             "sortNum": 20000,
-            "created": "2024-10-13T23:51:00.198Z",
-            "modified": "2024-10-14T00:56:03.484Z",
+            "created": "2024-10-14T15:02:17.024Z",
+            "modified": "2024-10-14T15:02:17.024Z",
             "headers": [],
             "params": [],
             "body": {
@@ -178,15 +178,15 @@
             "tests": []
         },
         {
-            "_id": "44e77ea2-fe94-481c-bc11-e70cc43c3aed",
-            "colId": "cd65443a-6bf4-4337-9144-d0b28a2f588c",
-            "containerId": "78d67f02-0f6d-4428-acef-c25fe89b5415",
+            "_id": "2889d6ad-0fbe-4d5e-8810-6574d18505b2",
+            "colId": "7f7ff7c2-3813-4b86-941f-90c42e20a575",
+            "containerId": "32a4a47c-5618-48fe-a1c9-77c00cf2b8c1",
             "name": "Login Employee",
             "url": "auth/login",
             "method": "POST",
             "sortNum": 25000,
-            "created": "2024-10-13T23:51:00.201Z",
-            "modified": "2024-10-13T23:51:00.201Z",
+            "created": "2024-10-14T15:02:17.027Z",
+            "modified": "2024-10-14T15:02:17.027Z",
             "headers": [],
             "params": [],
             "body": {
@@ -206,15 +206,15 @@
             "tests": []
         },
         {
-            "_id": "01192697-df49-4240-8327-5cb251dffcd9",
-            "colId": "cd65443a-6bf4-4337-9144-d0b28a2f588c",
-            "containerId": "6c404845-8f75-462a-acae-eb962fb9fe36",
+            "_id": "0c7ac2c4-9453-4aaa-a2c6-49501e3e00ba",
+            "colId": "7f7ff7c2-3813-4b86-941f-90c42e20a575",
+            "containerId": "8fb0960a-23e0-46ef-bd70-612c6fea3128",
             "name": "Add Boss",
             "url": "vacations/addVacations",
             "method": "POST",
             "sortNum": 40000,
-            "created": "2024-10-13T23:51:00.200Z",
-            "modified": "2024-10-13T23:51:00.200Z",
+            "created": "2024-10-14T15:02:17.026Z",
+            "modified": "2024-10-14T15:02:17.026Z",
             "headers": [
                 {
                     "name": "Authorization",
@@ -247,15 +247,15 @@
             "tests": []
         },
         {
-            "_id": "234fc188-6e64-418e-97df-8b67ce2c1fda",
-            "colId": "cd65443a-6bf4-4337-9144-d0b28a2f588c",
-            "containerId": "6c404845-8f75-462a-acae-eb962fb9fe36",
+            "_id": "bf3077f5-03bc-42a1-b568-f06d2b2e9bbd",
+            "colId": "7f7ff7c2-3813-4b86-941f-90c42e20a575",
+            "containerId": "8fb0960a-23e0-46ef-bd70-612c6fea3128",
             "name": "Add Employee",
             "url": "vacations/addVacations",
             "method": "POST",
             "sortNum": 50000,
-            "created": "2024-10-13T23:51:00.213Z",
-            "modified": "2024-10-13T23:51:00.213Z",
+            "created": "2024-10-14T15:02:17.039Z",
+            "modified": "2024-10-14T15:02:17.039Z",
             "headers": [
                 {
                     "name": "Authorization",
@@ -288,15 +288,15 @@
             "tests": []
         },
         {
-            "_id": "af519481-506c-44c7-b358-24e849944c92",
-            "colId": "cd65443a-6bf4-4337-9144-d0b28a2f588c",
-            "containerId": "6c404845-8f75-462a-acae-eb962fb9fe36",
+            "_id": "5b3cd5eb-f297-4f68-b978-df09296743f8",
+            "colId": "7f7ff7c2-3813-4b86-941f-90c42e20a575",
+            "containerId": "8fb0960a-23e0-46ef-bd70-612c6fea3128",
             "name": "Approve Boss",
             "url": "vacations/approveVacationBoss/66f43c273cb1a253f62f5ffd",
             "method": "PUT",
             "sortNum": 60000,
-            "created": "2024-10-13T23:51:00.202Z",
-            "modified": "2024-10-13T23:51:00.202Z",
+            "created": "2024-10-14T15:02:17.028Z",
+            "modified": "2024-10-14T15:02:17.028Z",
             "headers": [
                 {
                     "name": "Authorization",
@@ -307,15 +307,15 @@
             "tests": []
         },
         {
-            "_id": "4f0e723a-5d32-483c-a01f-3d34d912de97",
-            "colId": "cd65443a-6bf4-4337-9144-d0b28a2f588c",
-            "containerId": "767c9d94-a955-42a6-b8ef-2fd6d693fec6",
+            "_id": "3a90101c-0111-48b2-b81d-a25026e2be39",
+            "colId": "7f7ff7c2-3813-4b86-941f-90c42e20a575",
+            "containerId": "c96cac62-752f-4e49-b4c5-09bc666a2460",
             "name": "Add",
             "url": "holidays/addHoliday",
             "method": "POST",
             "sortNum": 90000,
-            "created": "2024-10-13T23:51:00.205Z",
-            "modified": "2024-10-13T23:51:00.205Z",
+            "created": "2024-10-14T15:02:17.031Z",
+            "modified": "2024-10-14T15:02:17.031Z",
             "headers": [
                 {
                     "name": "Authorization",
@@ -340,15 +340,15 @@
             "tests": []
         },
         {
-            "_id": "bacd985c-6762-4b89-b5c1-c37a9f2d26e0",
-            "colId": "cd65443a-6bf4-4337-9144-d0b28a2f588c",
-            "containerId": "767c9d94-a955-42a6-b8ef-2fd6d693fec6",
+            "_id": "ae9c8e18-41da-4fe2-b619-275f8d1df014",
+            "colId": "7f7ff7c2-3813-4b86-941f-90c42e20a575",
+            "containerId": "c96cac62-752f-4e49-b4c5-09bc666a2460",
             "name": "Get",
             "url": "holidays/getHolidays",
             "method": "GET",
             "sortNum": 100000,
-            "created": "2024-10-13T23:51:00.206Z",
-            "modified": "2024-10-13T23:51:00.206Z",
+            "created": "2024-10-14T15:02:17.032Z",
+            "modified": "2024-10-14T15:02:17.032Z",
             "headers": [
                 {
                     "name": "Authorization",
@@ -359,15 +359,15 @@
             "tests": []
         },
         {
-            "_id": "c53e0dc7-dc10-40fb-b1c4-248e797fc700",
-            "colId": "cd65443a-6bf4-4337-9144-d0b28a2f588c",
-            "containerId": "767c9d94-a955-42a6-b8ef-2fd6d693fec6",
+            "_id": "be69877c-db7c-4219-8c52-d9a10b50d09f",
+            "colId": "7f7ff7c2-3813-4b86-941f-90c42e20a575",
+            "containerId": "c96cac62-752f-4e49-b4c5-09bc666a2460",
             "name": "Delete",
             "url": "holidays/deleteHoliday/66f4382b3cb1a253f62f5fbc",
             "method": "DELETE",
             "sortNum": 110000,
-            "created": "2024-10-13T23:51:00.207Z",
-            "modified": "2024-10-13T23:51:00.207Z",
+            "created": "2024-10-14T15:02:17.033Z",
+            "modified": "2024-10-14T15:02:17.033Z",
             "headers": [
                 {
                     "name": "Authorization",
@@ -378,15 +378,15 @@
             "tests": []
         },
         {
-            "_id": "2619e491-6d06-49c6-a943-26eba86899db",
-            "colId": "cd65443a-6bf4-4337-9144-d0b28a2f588c",
-            "containerId": "767c9d94-a955-42a6-b8ef-2fd6d693fec6",
+            "_id": "8bc39d99-72ae-41b5-bf31-d92d58f339fb",
+            "colId": "7f7ff7c2-3813-4b86-941f-90c42e20a575",
+            "containerId": "c96cac62-752f-4e49-b4c5-09bc666a2460",
             "name": "Update",
             "url": "holidays/updateHoliday/66ed9a98be998ae1837b7d2d",
             "method": "PUT",
             "sortNum": 120000,
-            "created": "2024-10-13T23:51:00.208Z",
-            "modified": "2024-10-13T23:51:00.208Z",
+            "created": "2024-10-14T15:02:17.034Z",
+            "modified": "2024-10-14T15:02:17.034Z",
             "headers": [
                 {
                     "name": "Authorization",
@@ -411,15 +411,15 @@
             "tests": []
         },
         {
-            "_id": "f9f541a2-94af-4521-b139-0020cb45417f",
-            "colId": "cd65443a-6bf4-4337-9144-d0b28a2f588c",
-            "containerId": "6c404845-8f75-462a-acae-eb962fb9fe36",
+            "_id": "2650f12a-e1a2-4bc3-8cf2-5ff40cefe9ec",
+            "colId": "7f7ff7c2-3813-4b86-941f-90c42e20a575",
+            "containerId": "8fb0960a-23e0-46ef-bd70-612c6fea3128",
             "name": "Approve Employee",
             "url": "vacations/approveVacationEmployee/66f43c333cb1a253f62f6002",
             "method": "PUT",
             "sortNum": 130000,
-            "created": "2024-10-13T23:51:00.209Z",
-            "modified": "2024-10-13T23:51:00.209Z",
+            "created": "2024-10-14T15:02:17.035Z",
+            "modified": "2024-10-14T15:02:17.035Z",
             "headers": [
                 {
                     "name": "Authorization",
@@ -430,15 +430,15 @@
             "tests": []
         },
         {
-            "_id": "16ae30de-1364-405d-8b39-9f4ad91241d5",
-            "colId": "cd65443a-6bf4-4337-9144-d0b28a2f588c",
-            "containerId": "6c404845-8f75-462a-acae-eb962fb9fe36",
+            "_id": "abc4838c-4856-48aa-a930-ef3b5992a829",
+            "colId": "7f7ff7c2-3813-4b86-941f-90c42e20a575",
+            "containerId": "8fb0960a-23e0-46ef-bd70-612c6fea3128",
             "name": "Refuse Boss",
             "url": "vacations/refuseVacationBoss/66e8aa42c77459c501d8d662",
             "method": "PUT",
             "sortNum": 140000,
-            "created": "2024-10-13T23:51:00.210Z",
-            "modified": "2024-10-13T23:51:00.210Z",
+            "created": "2024-10-14T15:02:17.036Z",
+            "modified": "2024-10-14T15:02:17.036Z",
             "headers": [
                 {
                     "name": "Authorization",
@@ -449,15 +449,15 @@
             "tests": []
         },
         {
-            "_id": "9a46097b-c631-4471-a446-c132ba0d30d9",
-            "colId": "cd65443a-6bf4-4337-9144-d0b28a2f588c",
-            "containerId": "6c404845-8f75-462a-acae-eb962fb9fe36",
+            "_id": "e38be107-c4ea-4697-b205-32e4f53abd81",
+            "colId": "7f7ff7c2-3813-4b86-941f-90c42e20a575",
+            "containerId": "8fb0960a-23e0-46ef-bd70-612c6fea3128",
             "name": "Refuse Employee",
             "url": "vacations/refuseVacationEmployee/66ed9bacbe998ae1837b7d3d",
             "method": "PUT",
             "sortNum": 150000,
-            "created": "2024-10-13T23:51:00.211Z",
-            "modified": "2024-10-13T23:51:00.211Z",
+            "created": "2024-10-14T15:02:17.037Z",
+            "modified": "2024-10-14T15:02:17.037Z",
             "headers": [
                 {
                     "name": "Authorization",
@@ -468,34 +468,34 @@
             "tests": []
         },
         {
-            "_id": "9299aa42-d85b-4039-8968-4d0b258b6f8e",
-            "colId": "cd65443a-6bf4-4337-9144-d0b28a2f588c",
-            "containerId": "6c404845-8f75-462a-acae-eb962fb9fe36",
+            "_id": "1166d68f-9c3f-4651-b6b6-0d39245bf35a",
+            "colId": "7f7ff7c2-3813-4b86-941f-90c42e20a575",
+            "containerId": "8fb0960a-23e0-46ef-bd70-612c6fea3128",
             "name": "Get Days Boss",
-            "url": "vacations/getDays/66e8a855334cc8e3a266bdff",
+            "url": "vacations/getVacationDaysAviable/66fca23c4611fb94eac61124",
             "method": "GET",
             "sortNum": 160000,
-            "created": "2024-10-13T23:51:00.212Z",
-            "modified": "2024-10-13T23:51:00.212Z",
+            "created": "2024-10-14T15:02:17.038Z",
+            "modified": "2024-10-14T15:43:53.117Z",
             "headers": [
                 {
                     "name": "Authorization",
-                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NmU4YTg3OTMzNGNjOGUzYTI2NmJlMDEiLCJlbWFpbCI6Im9zdWF6b0BnbWFpbC5jb20iLCJpYXQiOjE3MjcyODExMzEsImV4cCI6MTcyNzI5MTkzMX0.C-jnSMuUWOxwsYdoxKKl7gFu394dd4iYMece72eStZo"
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NmZjYTIzYzQ2MTFmYjk0ZWFjNjExMjQiLCJlbWFpbCI6ImFkb3JlbkBnbWFpbC5jb20iLCJpYXQiOjE3Mjg5MTgwMDYsImV4cCI6MTcyODkyODgwNn0.mretAEvLXNaMb6BCCLiNcy-ZF7lm4ZwEaGMy9OgkAGs"
                 }
             ],
             "params": [],
             "tests": []
         },
         {
-            "_id": "b57371f3-1bab-448a-b18e-07ea8fc0a959",
-            "colId": "cd65443a-6bf4-4337-9144-d0b28a2f588c",
-            "containerId": "6c404845-8f75-462a-acae-eb962fb9fe36",
+            "_id": "4a637c4f-593e-4f60-82b4-ea9549376072",
+            "colId": "7f7ff7c2-3813-4b86-941f-90c42e20a575",
+            "containerId": "8fb0960a-23e0-46ef-bd70-612c6fea3128",
             "name": "Get Days Employee",
             "url": "vacations/getDays/66ed99e8be998ae1837b7d22",
             "method": "GET",
             "sortNum": 180000,
-            "created": "2024-10-13T23:51:00.214Z",
-            "modified": "2024-10-13T23:51:00.214Z",
+            "created": "2024-10-14T15:02:17.040Z",
+            "modified": "2024-10-14T15:02:17.040Z",
             "headers": [
                 {
                     "name": "Authorization",
@@ -506,15 +506,15 @@
             "tests": []
         },
         {
-            "_id": "7e542b8c-a566-45b8-aa04-71f9494942d0",
-            "colId": "cd65443a-6bf4-4337-9144-d0b28a2f588c",
-            "containerId": "d8a62046-7e4a-4904-a28c-8adf10902db3",
+            "_id": "d4e5df9e-0ee9-4387-af2f-7e46c44ae809",
+            "colId": "7f7ff7c2-3813-4b86-941f-90c42e20a575",
+            "containerId": "d08281ac-13c9-4d64-ac78-5e3cc18279ff",
             "name": "Create",
             "url": "teams/createTeam/",
             "method": "POST",
             "sortNum": 200000,
-            "created": "2024-10-13T23:51:00.215Z",
-            "modified": "2024-10-13T23:51:00.215Z",
+            "created": "2024-10-14T15:02:17.041Z",
+            "modified": "2024-10-14T15:02:17.041Z",
             "headers": [
                 {
                     "name": "Authorization",
@@ -552,15 +552,15 @@
             "tests": []
         },
         {
-            "_id": "6ceb07ea-03a7-4c48-86ea-1999610ecf92",
-            "colId": "cd65443a-6bf4-4337-9144-d0b28a2f588c",
-            "containerId": "d8a62046-7e4a-4904-a28c-8adf10902db3",
+            "_id": "39f1d995-6725-45b7-bb7a-8f3fcd8bb188",
+            "colId": "7f7ff7c2-3813-4b86-941f-90c42e20a575",
+            "containerId": "d08281ac-13c9-4d64-ac78-5e3cc18279ff",
             "name": "Add member",
             "url": "teams/addMemberToTeam/66f440e02f85188d146efd0f",
             "method": "PUT",
             "sortNum": 210000,
-            "created": "2024-10-13T23:51:00.216Z",
-            "modified": "2024-10-13T23:51:00.216Z",
+            "created": "2024-10-14T15:02:17.042Z",
+            "modified": "2024-10-14T15:02:17.042Z",
             "headers": [
                 {
                     "name": "Authorization",
@@ -576,15 +576,15 @@
             "tests": []
         },
         {
-            "_id": "2fac4229-3bae-4efc-a63e-a2dbb277ff9d",
-            "colId": "cd65443a-6bf4-4337-9144-d0b28a2f588c",
-            "containerId": "d8a62046-7e4a-4904-a28c-8adf10902db3",
+            "_id": "5455edd1-7bf4-40d7-a542-a3475e988e35",
+            "colId": "7f7ff7c2-3813-4b86-941f-90c42e20a575",
+            "containerId": "d08281ac-13c9-4d64-ac78-5e3cc18279ff",
             "name": "Edit team",
             "url": "teams/editTeam/66ec6fe8597f5f1fb276e916",
             "method": "PUT",
             "sortNum": 220000,
-            "created": "2024-10-13T23:51:00.217Z",
-            "modified": "2024-10-13T23:51:00.217Z",
+            "created": "2024-10-14T15:02:17.043Z",
+            "modified": "2024-10-14T15:02:17.043Z",
             "headers": [],
             "params": [],
             "body": {
@@ -604,15 +604,15 @@
             "tests": []
         },
         {
-            "_id": "578617ba-8e50-4569-bf05-cc8b9cea8716",
-            "colId": "cd65443a-6bf4-4337-9144-d0b28a2f588c",
-            "containerId": "d8a62046-7e4a-4904-a28c-8adf10902db3",
+            "_id": "94c8e85c-6fc6-47fd-9f36-413ebe090f99",
+            "colId": "7f7ff7c2-3813-4b86-941f-90c42e20a575",
+            "containerId": "d08281ac-13c9-4d64-ac78-5e3cc18279ff",
             "name": "Edit Team boss",
             "url": "teams/editTeamBoss/66ed9d81be998ae1837b7d4c",
             "method": "PUT",
             "sortNum": 225000,
-            "created": "2024-10-13T23:51:00.221Z",
-            "modified": "2024-10-13T23:51:00.221Z",
+            "created": "2024-10-14T15:02:17.046Z",
+            "modified": "2024-10-14T15:02:17.046Z",
             "headers": [],
             "params": [],
             "body": {
@@ -632,15 +632,15 @@
             "tests": []
         },
         {
-            "_id": "4a9b7a5c-0bfc-478e-863b-fca3ac136490",
-            "colId": "cd65443a-6bf4-4337-9144-d0b28a2f588c",
-            "containerId": "d8a62046-7e4a-4904-a28c-8adf10902db3",
+            "_id": "9886c70c-72aa-4e71-b52f-46aa12ff3b20",
+            "colId": "7f7ff7c2-3813-4b86-941f-90c42e20a575",
+            "containerId": "d08281ac-13c9-4d64-ac78-5e3cc18279ff",
             "name": "Remove member",
             "url": "teams/removeMemberFromTeam/66ec6fe8597f5f1fb276e916",
             "method": "DELETE",
             "sortNum": 227500,
-            "created": "2024-10-13T23:51:00.222Z",
-            "modified": "2024-10-13T23:51:00.222Z",
+            "created": "2024-10-14T15:02:17.047Z",
+            "modified": "2024-10-14T15:02:17.047Z",
             "headers": [],
             "params": [],
             "body": {
@@ -656,57 +656,57 @@
             "tests": []
         },
         {
-            "_id": "76535e28-a203-463c-874d-9243a1cf73e3",
-            "colId": "cd65443a-6bf4-4337-9144-d0b28a2f588c",
-            "containerId": "d8a62046-7e4a-4904-a28c-8adf10902db3",
+            "_id": "13145202-5ddc-47ef-b3d8-6e2969a24685",
+            "colId": "7f7ff7c2-3813-4b86-941f-90c42e20a575",
+            "containerId": "d08281ac-13c9-4d64-ac78-5e3cc18279ff",
             "name": "get Team",
             "url": "teams/getTeams",
             "method": "GET",
             "sortNum": 228750,
-            "created": "2024-10-13T23:51:00.220Z",
-            "modified": "2024-10-13T23:51:00.220Z",
+            "created": "2024-10-14T15:02:17.045Z",
+            "modified": "2024-10-14T15:02:17.045Z",
             "headers": [],
             "params": [],
             "tests": []
         },
         {
-            "_id": "40a55e3a-a188-4ff7-af20-440500009a7b",
-            "colId": "cd65443a-6bf4-4337-9144-d0b28a2f588c",
-            "containerId": "d8a62046-7e4a-4904-a28c-8adf10902db3",
+            "_id": "d2dd64aa-c837-4784-899e-2629a4b2700c",
+            "colId": "7f7ff7c2-3813-4b86-941f-90c42e20a575",
+            "containerId": "d08281ac-13c9-4d64-ac78-5e3cc18279ff",
             "name": "Get Team by Id",
             "url": "teams/getTeamById/66ed9d81be998ae1837b7d4c",
             "method": "GET",
             "sortNum": 229375,
-            "created": "2024-10-13T23:51:00.223Z",
-            "modified": "2024-10-13T23:51:00.223Z",
+            "created": "2024-10-14T15:02:17.048Z",
+            "modified": "2024-10-14T15:02:17.048Z",
             "headers": [],
             "params": [],
             "tests": []
         },
         {
-            "_id": "76cb5dac-d596-494e-a78f-12300eb7d616",
-            "colId": "cd65443a-6bf4-4337-9144-d0b28a2f588c",
-            "containerId": "d8a62046-7e4a-4904-a28c-8adf10902db3",
+            "_id": "45b1a003-8257-4b69-9622-5e9aaa4ec1b8",
+            "colId": "7f7ff7c2-3813-4b86-941f-90c42e20a575",
+            "containerId": "d08281ac-13c9-4d64-ac78-5e3cc18279ff",
             "name": "Delete team",
             "url": "teams/deleteTeam/66ec6fe8597f5f1fb276e916",
             "method": "DELETE",
             "sortNum": 230000,
-            "created": "2024-10-13T23:51:00.218Z",
-            "modified": "2024-10-13T23:51:00.218Z",
+            "created": "2024-10-14T15:02:17.044Z",
+            "modified": "2024-10-14T15:02:17.044Z",
             "headers": [],
             "params": [],
             "tests": []
         },
         {
-            "_id": "dbde6af2-9ed5-4072-99b9-2ce6001d2cc9",
-            "colId": "cd65443a-6bf4-4337-9144-d0b28a2f588c",
-            "containerId": "6c404845-8f75-462a-acae-eb962fb9fe36",
+            "_id": "160300e1-9510-4cf6-bff3-eab6e8293105",
+            "colId": "7f7ff7c2-3813-4b86-941f-90c42e20a575",
+            "containerId": "8fb0960a-23e0-46ef-bd70-612c6fea3128",
             "name": "Get User Vacation",
             "url": "vacations/getUserVacationRequests/66ed99e8be998ae1837b7d22",
             "method": "GET",
             "sortNum": 280000,
-            "created": "2024-10-13T23:51:00.224Z",
-            "modified": "2024-10-13T23:51:00.224Z",
+            "created": "2024-10-14T15:02:17.049Z",
+            "modified": "2024-10-14T15:02:17.049Z",
             "headers": [
                 {
                     "name": "Authorization",
@@ -717,15 +717,15 @@
             "tests": []
         },
         {
-            "_id": "4775cf0f-2428-48d5-9c0a-5d4a414d010c",
-            "colId": "cd65443a-6bf4-4337-9144-d0b28a2f588c",
-            "containerId": "6c404845-8f75-462a-acae-eb962fb9fe36",
+            "_id": "0e1d862c-94e3-4239-8465-83c2b2bc8702",
+            "colId": "7f7ff7c2-3813-4b86-941f-90c42e20a575",
+            "containerId": "8fb0960a-23e0-46ef-bd70-612c6fea3128",
             "name": "Get Status",
             "url": "vacations/getVacationRequestStatus/66ed99e8be998ae1837b7d22/66f43f303cb1a253f62f6028",
             "method": "GET",
             "sortNum": 290000,
-            "created": "2024-10-13T23:51:00.225Z",
-            "modified": "2024-10-14T04:18:00.533Z",
+            "created": "2024-10-14T15:02:17.051Z",
+            "modified": "2024-10-14T15:02:17.051Z",
             "headers": [
                 {
                     "name": "Authorization",
@@ -736,41 +736,41 @@
             "tests": []
         },
         {
-            "_id": "5909639b-c757-472b-87f5-de64c8c36b05",
-            "colId": "cd65443a-6bf4-4337-9144-d0b28a2f588c",
-            "containerId": "d8a62046-7e4a-4904-a28c-8adf10902db3",
+            "_id": "12191eee-9f4d-4b90-b82c-e7be756dfb39",
+            "colId": "7f7ff7c2-3813-4b86-941f-90c42e20a575",
+            "containerId": "d08281ac-13c9-4d64-ac78-5e3cc18279ff",
             "name": "Get team member with vacations days",
             "url": "teams/getTeamMembersWithVacationDays/66ed9d81be998ae1837b7d4c",
             "method": "GET",
             "sortNum": 300000,
-            "created": "2024-10-13T23:51:00.226Z",
-            "modified": "2024-10-13T23:51:00.226Z",
+            "created": "2024-10-14T15:02:17.052Z",
+            "modified": "2024-10-14T15:02:17.052Z",
             "headers": [],
             "params": [],
             "tests": []
         },
         {
-            "_id": "945f73c0-bdd0-4a04-a14c-c1400bc0a304",
-            "colId": "cd65443a-6bf4-4337-9144-d0b28a2f588c",
+            "_id": "2a140dee-eb41-48c3-9cd5-a9cc09952320",
+            "colId": "7f7ff7c2-3813-4b86-941f-90c42e20a575",
             "containerId": "",
             "name": "Vercel",
             "url": "",
             "method": "GET",
             "sortNum": 320000,
-            "created": "2024-10-13T23:51:00.227Z",
-            "modified": "2024-10-13T23:51:00.227Z",
+            "created": "2024-10-14T15:02:17.053Z",
+            "modified": "2024-10-14T15:02:17.053Z",
             "headers": []
         },
         {
-            "_id": "83947232-8281-4702-a6c3-a576a7e3c6d9",
-            "colId": "cd65443a-6bf4-4337-9144-d0b28a2f588c",
-            "containerId": "6c404845-8f75-462a-acae-eb962fb9fe36",
+            "_id": "15fd7649-b4c3-4751-b4ed-e7c2c84e0b2e",
+            "colId": "7f7ff7c2-3813-4b86-941f-90c42e20a575",
+            "containerId": "8fb0960a-23e0-46ef-bd70-612c6fea3128",
             "name": "Get Request",
             "url": "vacations/getBossVacationRequests",
             "method": "GET",
             "sortNum": 330000,
-            "created": "2024-10-13T23:51:47.472Z",
-            "modified": "2024-10-14T01:04:44.248Z",
+            "created": "2024-10-14T15:02:17.054Z",
+            "modified": "2024-10-14T15:02:17.054Z",
             "headers": [
                 {
                     "name": "Authorization",
@@ -781,47 +781,80 @@
             "tests": []
         },
         {
-            "_id": "64db8490-9952-4580-87f4-4df65ba87534",
-            "colId": "cd65443a-6bf4-4337-9144-d0b28a2f588c",
-            "containerId": "6c404845-8f75-462a-acae-eb962fb9fe36",
+            "_id": "b821fdcf-e269-4428-82d0-3de0836fbaaa",
+            "colId": "7f7ff7c2-3813-4b86-941f-90c42e20a575",
+            "containerId": "8fb0960a-23e0-46ef-bd70-612c6fea3128",
             "name": "pending requests",
-            "url": " vacations/getPendingRequests",
+            "url": "vacations/getPendingRequests/66fca23c4611fb94eac61124",
             "method": "GET",
             "sortNum": 340000,
-            "created": "2024-10-14T05:03:55.721Z",
-            "modified": "2024-10-14T05:06:26.751Z",
+            "created": "2024-10-14T15:02:17.055Z",
+            "modified": "2024-10-14T15:15:14.322Z",
             "headers": [
                 {
                     "name": "Authorization",
-                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NmZjYTIzYzQ2MTFmYjk0ZWFjNjExMjQiLCJlbWFpbCI6ImFkb3JlbkBnbWFpbC5jb20iLCJpYXQiOjE3Mjg4Nzk0MDYsImV4cCI6MTcyODg5MDIwNn0.v2QctiNsMUL7A_9z7PeH-AZMifRiHgFD6qEmOV0szKM"
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NmZjYTIzYzQ2MTFmYjk0ZWFjNjExMjQiLCJlbWFpbCI6ImFkb3JlbkBnbWFpbC5jb20iLCJpYXQiOjE3Mjg5MTgwMDYsImV4cCI6MTcyODkyODgwNn0.mretAEvLXNaMb6BCCLiNcy-ZF7lm4ZwEaGMy9OgkAGs"
                 }
             ],
             "params": [],
             "tests": []
         },
         {
-            "_id": "177d13f2-6286-43bc-98c2-dd47a822011c",
-            "colId": "cd65443a-6bf4-4337-9144-d0b28a2f588c",
-            "containerId": "6c404845-8f75-462a-acae-eb962fb9fe36",
+            "_id": "eecbae35-9ba7-43ed-a33e-d84d4ebb12c1",
+            "colId": "7f7ff7c2-3813-4b86-941f-90c42e20a575",
+            "containerId": "8fb0960a-23e0-46ef-bd70-612c6fea3128",
             "name": "approved requests",
-            "url": "",
+            "url": "vacations/getApprovedRequests/66fca23c4611fb94eac61124",
             "method": "GET",
             "sortNum": 350000,
-            "created": "2024-10-14T05:04:14.548Z",
-            "modified": "2024-10-14T05:04:14.548Z",
-            "headers": []
+            "created": "2024-10-14T15:02:17.056Z",
+            "modified": "2024-10-14T15:16:13.342Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NmZjYTIzYzQ2MTFmYjk0ZWFjNjExMjQiLCJlbWFpbCI6ImFkb3JlbkBnbWFpbC5jb20iLCJpYXQiOjE3Mjg5MTgwMDYsImV4cCI6MTcyODkyODgwNn0.mretAEvLXNaMb6BCCLiNcy-ZF7lm4ZwEaGMy9OgkAGs"
+                }
+            ],
+            "params": [],
+            "tests": []
         },
         {
-            "_id": "0a0dc753-c1e8-45a6-a9ca-7a3cf4c35c57",
-            "colId": "cd65443a-6bf4-4337-9144-d0b28a2f588c",
-            "containerId": "6c404845-8f75-462a-acae-eb962fb9fe36",
+            "_id": "75d7adda-74d1-4ea4-8218-1ba0f1f23077",
+            "colId": "7f7ff7c2-3813-4b86-941f-90c42e20a575",
+            "containerId": "8fb0960a-23e0-46ef-bd70-612c6fea3128",
             "name": "refuse requests",
-            "url": "",
+            "url": "vacations/getRefusedRequests/66fca23c4611fb94eac61124",
             "method": "GET",
             "sortNum": 360000,
-            "created": "2024-10-14T05:04:32.929Z",
-            "modified": "2024-10-14T05:04:32.929Z",
-            "headers": []
+            "created": "2024-10-14T15:02:17.057Z",
+            "modified": "2024-10-14T15:16:27.702Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NmZjYTIzYzQ2MTFmYjk0ZWFjNjExMjQiLCJlbWFpbCI6ImFkb3JlbkBnbWFpbC5jb20iLCJpYXQiOjE3Mjg5MTgwMDYsImV4cCI6MTcyODkyODgwNn0.mretAEvLXNaMb6BCCLiNcy-ZF7lm4ZwEaGMy9OgkAGs"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "8300fb72-27e6-45bb-b7a5-ac59a11be515",
+            "colId": "7f7ff7c2-3813-4b86-941f-90c42e20a575",
+            "containerId": "d08281ac-13c9-4d64-ac78-5e3cc18279ff",
+            "name": "get user team",
+            "url": "teams/getUserTeams/66fca23c4611fb94eac61124",
+            "method": "GET",
+            "sortNum": 370000,
+            "created": "2024-10-14T16:15:50.662Z",
+            "modified": "2024-10-14T16:54:00.308Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NmZjYTIzYzQ2MTFmYjk0ZWFjNjExMjQiLCJlbWFpbCI6ImFkb3JlbkBnbWFpbC5jb20iLCJpYXQiOjE3Mjg5MTgwMDYsImV4cCI6MTcyODkyODgwNn0.mretAEvLXNaMb6BCCLiNcy-ZF7lm4ZwEaGMy9OgkAGs"
+                }
+            ],
+            "params": [],
+            "tests": []
         }
     ],
     "settings": {
