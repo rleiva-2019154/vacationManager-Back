@@ -9,7 +9,8 @@ import {
     deleteTeam,
     getTeams,
     getTeamById,
-    getTeamMembersWithVacationDays
+    getTeamMembersWithVacationDays,
+    getUserTeams
 } from "./team.controller.js"
 import { isAdmin, isBoss, isBossOrEmployee, isAdminOrBoss} from "../../middlewares/role-auth.js";
 import { 
@@ -37,6 +38,8 @@ api.get('/getTeams', validateJwt, isAdmin, getTeams)
 api.get('/getTeamById/:teamId', validateJwt, isAdmin, getTeamById)
 
 api.get('/getTeamMembersWithVacationDays/:teamId', validateJwt, isAdminOrBoss, getTeamMembersWithVacationDays)
+
+api.get('/getUserTeams/:uid', validateJwt, isBossOrEmployee, getUserTeams);
 
 export default api
 
