@@ -399,3 +399,28 @@ export const getRefusedRequests = async (req, res) => {
         return res.status(500).json({ message: 'Error al obtener las solicitudes rechazadas', err });
     }
 };
+
+
+export const getVacationDaysAviable = async (req, res) => {
+    try {
+        const { uid } = req.params; // Obtener el UID del usuario desde los parámetros
+
+        // Verificar si el usuario existe
+        const user = await User.findById(uid);
+        if (!user) {
+            return res.status(404).json({ message: 'Usuario no encontrado' });
+        }
+
+        // Obtener los días de vacaciones disponibles del usuario
+        const vacationDaysAvailable = user.vacationDaysAvailable;
+
+        // Devolver los días de vacaciones disponibles
+        return res.status(200).json({
+            message: 'Días de vacaciones disponibles obtenidos correctamente.',
+            vacationDaysAvailable
+        });
+    } catch (err) {
+        console.error('Error al obtener los días de vacaciones disponibles', err);
+        return res.status(500).json({ message: 'Error al obtener los días de vacaciones disponibles', err });
+    }
+};
