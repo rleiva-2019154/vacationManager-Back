@@ -318,10 +318,13 @@ export const getBossVacationRequests = async (req, res) => {
 
 export const getPendingRequests = async (req, res) => {
     try {
-        const requests = await vacationRequestModel.find({ status: 'Pendiente' }).populate('uid', 'name email');
-        
+        const { uid } = req.user;  // Obtener el UID del usuario autenticado
+
+        // Buscar solo las solicitudes 'Pendiente' de este usuario
+        const requests = await vacationRequestModel.find({ uid, status: 'Pendiente' }).populate('uid', 'name email');
+
         if (!requests.length) {
-            return res.status(404).json({ message: 'No hay solicitudes pendientes.' });
+            return res.status(404).json({ message: 'No hay solicitudes pendientes para este usuario.' });
         }
 
         return res.status(200).json({
@@ -334,12 +337,16 @@ export const getPendingRequests = async (req, res) => {
     }
 };
 
+
 export const getApprovedRequests = async (req, res) => {
     try {
-        const requests = await vacationRequestModel.find({ status: 'Aprobado' }).populate('uid', 'name email');
-        
+        const { uid } = req.user;  // Obtener el UID del usuario autenticado
+
+        // Buscar solo las solicitudes 'Aprobado' de este usuario
+        const requests = await vacationRequestModel.find({ uid, status: 'Aprobado' }).populate('uid', 'name email');
+
         if (!requests.length) {
-            return res.status(404).json({ message: 'No hay solicitudes aprobadas.' });
+            return res.status(404).json({ message: 'No hay solicitudes aprobadas para este usuario.' });
         }
 
         return res.status(200).json({
@@ -352,12 +359,16 @@ export const getApprovedRequests = async (req, res) => {
     }
 };
 
+
 export const getRefusedRequests = async (req, res) => {
     try {
-        const requests = await vacationRequestModel.find({ status: 'Rechazado' }).populate('uid', 'name email');
-        
+        const { uid } = req.user;  // Obtener el UID del usuario autenticado
+
+        // Buscar solo las solicitudes 'Rechazado' de este usuario
+        const requests = await vacationRequestModel.find({ uid, status: 'Rechazado' }).populate('uid', 'name email');
+
         if (!requests.length) {
-            return res.status(404).json({ message: 'No hay solicitudes rechazadas.' });
+            return res.status(404).json({ message: 'No hay solicitudes rechazadas para este usuario.' });
         }
 
         return res.status(200).json({
@@ -369,3 +380,4 @@ export const getRefusedRequests = async (req, res) => {
         return res.status(500).json({ message: 'Error al obtener las solicitudes rechazadas', err });
     }
 };
+
