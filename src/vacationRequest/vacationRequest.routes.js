@@ -35,11 +35,11 @@ api. get('/getVacationRequestStatus/:uid/:requestId', validateJwt, isBossOrEmplo
 
 api.get('/getBossVacationRequests', validateJwt, isAdmin, getBossVacationRequests);
 
-api.get('/getPendingRequests', validateJwt, isBossOrEmployee, getPendingRequests);
+api.get('/getPendingRequests/:uid', validateJwt, isBossOrEmployee, getPendingRequests);
 
-api.get('/getApprovedRequests', validateJwt, isBossOrEmployee, getApprovedRequests);
+api.get('/getApprovedRequests/:uid', validateJwt, isBossOrEmployee, getApprovedRequests);
 
-api.get('/getRefusedRequests', validateJwt, isBossOrEmployee, getRefusedRequests);
+api.get('/getRefusedRequests/:uid', validateJwt, isBossOrEmployee, getRefusedRequests);
 
 
 export default api
