@@ -315,3 +315,57 @@ export const getBossVacationRequests = async (req, res) => {
         return res.status(500).json({ message: 'Error al obtener las solicitudes de vacaciones de los jefes', err });
     }
 };
+
+export const getPendingRequests = async (req, res) => {
+    try {
+        const requests = await vacationRequestModel.find({ status: 'Pendiente' }).populate('uid', 'name email');
+        
+        if (!requests.length) {
+            return res.status(404).json({ message: 'No hay solicitudes pendientes.' });
+        }
+
+        return res.status(200).json({
+            message: 'Solicitudes pendientes obtenidas correctamente.',
+            requests
+        });
+    } catch (err) {
+        console.error('Error al obtener las solicitudes pendientes', err);
+        return res.status(500).json({ message: 'Error al obtener las solicitudes pendientes', err });
+    }
+};
+
+export const getApprovedRequests = async (req, res) => {
+    try {
+        const requests = await vacationRequestModel.find({ status: 'Aprobado' }).populate('uid', 'name email');
+        
+        if (!requests.length) {
+            return res.status(404).json({ message: 'No hay solicitudes aprobadas.' });
+        }
+
+        return res.status(200).json({
+            message: 'Solicitudes aprobadas obtenidas correctamente.',
+            requests
+        });
+    } catch (err) {
+        console.error('Error al obtener las solicitudes aprobadas', err);
+        return res.status(500).json({ message: 'Error al obtener las solicitudes aprobadas', err });
+    }
+};
+
+export const getRefusedRequests = async (req, res) => {
+    try {
+        const requests = await vacationRequestModel.find({ status: 'Rechazado' }).populate('uid', 'name email');
+        
+        if (!requests.length) {
+            return res.status(404).json({ message: 'No hay solicitudes rechazadas.' });
+        }
+
+        return res.status(200).json({
+            message: 'Solicitudes rechazadas obtenidas correctamente.',
+            requests
+        });
+    } catch (err) {
+        console.error('Error al obtener las solicitudes rechazadas', err);
+        return res.status(500).json({ message: 'Error al obtener las solicitudes rechazadas', err });
+    }
+};
