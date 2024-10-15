@@ -509,6 +509,35 @@ export const getRefuseBossRequests = async (req, res) => {
     }
 };
 
+export const getRefuseEmployeeRequests = async (req, res) => {
+    try {
+        // Obtener los usuarios que son empleados
+        const employees = await User.find({ role: 'EMPLOYEE' });
+
+        if (!employees.length) {
+            return res.status(404).json({ message: 'No se encontraron empleados con solicitudes rechazadas.' });
+        }
+
+        // Obtener solo las solicitudes 'Rechazado' de los empleados
+        const rejectedRequests = await vacationRequestModel.find({
+            uid: { $in: employees.map(employee => employee._id) },
+            status: 'Rechazado'
+        }).populate('uid', 'name surname email');
+
+        if (!rejectedRequests.length) {
+            return res.status(404).json({ message: 'No se encontraron solicitudes rechazadas de los empleados.' });
+        }
+
+        return res.status(200).json({
+            message: 'Solicitudes rechazadas obtenidas correctamente.',
+            requests: rejectedRequests // Asegúrate de que el nombre de la clave sea correcto
+        });
+    } catch (err) {
+        console.error('Error al obtener las solicitudes rechazadas de los empleados', err);
+        return res.status(500).json({ message: 'Error al obtener las solicitudes rechazadas de los empleados', err });
+    }
+};
+
 export const getPendingBossRequests = async (req, res) => {
     try {
         // Obtener los usuarios que tienen el rol de 'BOSS'
