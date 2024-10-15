@@ -568,6 +568,36 @@ export const getPendingBossRequests = async (req, res) => {
     }
 };
 
+export const getPendingEmployeeRequests = async (req, res) => {
+    try {
+        // Obtener los usuarios que tienen el rol de 'EMPLOYEE'
+        const employees = await User.find({ role: 'EMPLOYEE' });
+
+        if (!employees.length) {
+            return res.status(404).json({ message: 'No se encontraron empleados con solicitudes pendientes.' });
+        }
+
+        // Obtener solo las solicitudes 'Pendiente' de los empleados
+        const pendingRequests = await vacationRequestModel.find({
+            uid: { $in: employees.map(employee => employee._id) }, // Filtrar por los empleados encontrados
+            status: 'Pendiente' // Filtrar por solicitudes en estado "Pendiente"
+        }).populate('uid', 'name surname email'); // Popular los detalles de los empleados
+
+        if (!pendingRequests.length) {
+            return res.status(404).json({ message: 'No se encontraron solicitudes pendientes de los empleados.' });
+        }
+
+        // Devolver las solicitudes pendientes de los empleados
+        return res.status(200).json({
+            message: 'Solicitudes pendientes obtenidas correctamente.',
+            pendingRequests
+        });
+    } catch (err) {
+        console.error('Error al obtener las solicitudes pendientes de los empleados', err);
+        return res.status(500).json({ message: 'Error al obtener las solicitudes pendientes de los empleados', err });
+    }
+};
+
 export const getEmployeeVacationRequests = async (req, res) => {
     try {
         // Obtenemos a los usuarios que son empleados
