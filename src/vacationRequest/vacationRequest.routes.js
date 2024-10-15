@@ -8,6 +8,7 @@ import {
     getUserVacationRequests,
     getVacationRequestStatus,
     getBossVacationRequests,
+    getEmployeeVacationRequests,
     getPendingRequests, 
     getApprovedRequests, 
     getRefusedRequests,
@@ -38,6 +39,8 @@ api.get('/getUserVacationRequests/:uid', validateJwt, isBossOrEmployee, getUserV
 api. get('/getVacationRequestStatus/:uid/:requestId', validateJwt, isBossOrEmployee, getVacationRequestStatus)
 
 api.get('/getBossVacationRequests', validateJwt, isAdmin, getBossVacationRequests);
+
+api.get('/getEmployeeVacationRequests', validateJwt, isBoss, getEmployeeVacationRequests);
 
 api.get('/getPendingRequests/:uid', validateJwt, isBossOrEmployee, getPendingRequests);
 
