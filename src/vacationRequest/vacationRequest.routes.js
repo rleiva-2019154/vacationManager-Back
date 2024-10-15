@@ -14,6 +14,7 @@ import {
     getRefusedRequests,
     getVacationDaysAviable,
     getApprovedBossRequests,
+    getApprovedEmployeeRequests,
     getRefuseBossRequests,
     getPendingBossRequests 
 } from "./vacationRequest.controller.js"
@@ -51,6 +52,8 @@ api.get('/getRefusedRequests/:uid', validateJwt, isBossOrEmployee, getRefusedReq
 api.get('/getVacationDaysAviable/:uid', validateJwt, isBossOrEmployee, getVacationDaysAviable);
 
 api.get('/getApprovedBossRequests', validateJwt, isAdmin, getApprovedBossRequests);
+
+api.get('/getApprovedEmployeeRequests', validateJwt, isBoss, getApprovedEmployeeRequests);
 
 api.get('/getRefuseBossRequests', validateJwt, isAdmin, getRefuseBossRequests);
 
