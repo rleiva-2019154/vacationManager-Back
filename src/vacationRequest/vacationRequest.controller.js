@@ -343,8 +343,6 @@ export const getPendingRequests = async (req, res) => {
     }
 };
 
-
-
 export const getApprovedRequests = async (req, res) => {
     try {
         const { uid } = req.params;  // Obtener el ID del usuario desde los parámetros de la URL
@@ -371,7 +369,6 @@ export const getApprovedRequests = async (req, res) => {
         return res.status(500).json({ message: 'Error al obtener las solicitudes aprobadas', err });
     }
 };
-
 
 export const getRefusedRequests = async (req, res) => {
     try {
@@ -400,7 +397,6 @@ export const getRefusedRequests = async (req, res) => {
     }
 };
 
-
 export const getVacationDaysAviable = async (req, res) => {
     try {
         const { uid } = req.params; // Obtener el UID del usuario desde los parámetros
@@ -423,4 +419,34 @@ export const getVacationDaysAviable = async (req, res) => {
         console.error('Error al obtener los días de vacaciones disponibles', err);
         return res.status(500).json({ message: 'Error al obtener los días de vacaciones disponibles', err });
     }
+};
+
+// Obtener todas las solicitudes aprobadas de los jefes (para el admin)
+export const getApprovedBossRequests = async (req, res) => {
+    try {
+        // Obtener los usuarios que son jefes
+        const bosses = await User.find({ role: 'BOSS' });
+
+        if (!bosses.length) {
+            return res.status(404).json({ message: 'No se encontraron jefes con solicitudes aprobadas.' });
+        }
+
+        // Obtener solo las solicitudes 'Aprobado' de los jefes
+        const approvedRequests = await vacationRequestModel.find({
+            uid: { $in: bosses.map(boss => boss._id) },
+            status: 'Aprobado'
+        }).populate('uid', 'name surname email');
+
+        if (!approvedRequests.length) {
+            return res.status(404).json({ message: 'No se encontraron solicitudes aprobadas de los jefes.' });
+        }
+
+        return res.status(200).json({
+            message: 'Solicitudes aprobadas obtenidas correctamente.',
+            approvedRequests
+        });
+    } catch (err) {
+        console.error('Error al obtener las solicitudes aprobadas de los jefes', err);
+        return res.status(500).json({ message: 'Error al obtener las solicitudes aprobadas de los jefes', err });
+    }
 };
