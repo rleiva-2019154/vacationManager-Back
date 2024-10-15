@@ -479,3 +479,33 @@ export const getRefuseBossRequests = async (req, res) => {
         return res.status(500).json({ message: 'Error al obtener las solicitudes rechazadas de los jefes', err });
     }
 };
+
+export const getPendingBossRequests = async (req, res) => {
+    try {
+        // Obtener los usuarios que tienen el rol de 'BOSS'
+        const bosses = await User.find({ role: 'BOSS' });
+
+        if (!bosses.length) {
+            return res.status(404).json({ message: 'No se encontraron jefes con solicitudes pendientes.' });
+        }
+
+        // Obtener solo las solicitudes 'Pendiente' de los jefes
+        const pendingRequests = await vacationRequestModel.find({
+            uid: { $in: bosses.map(boss => boss._id) }, // Filtrar por los jefes encontrados
+            status: 'Pendiente' // Filtrar por solicitudes en estado "Pendiente"
+        }).populate('uid', 'name surname email'); // Popular los detalles de los jefes
+
+        if (!pendingRequests.length) {
+            return res.status(404).json({ message: 'No se encontraron solicitudes pendientes de los jefes.' });
+        }
+
+        // Devolver las solicitudes pendientes de los jefes
+        return res.status(200).json({
+            message: 'Solicitudes pendientes obtenidas correctamente.',
+            pendingRequests
+        });
+    } catch (err) {
+        console.error('Error al obtener las solicitudes pendientes de los jefes', err);
+        return res.status(500).json({ message: 'Error al obtener las solicitudes pendientes de los jefes', err });
+    }
+};
