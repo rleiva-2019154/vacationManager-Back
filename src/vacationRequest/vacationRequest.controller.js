@@ -451,6 +451,35 @@ export const getApprovedBossRequests = async (req, res) => {
     }
 };
 
+export const getApprovedEmployeeRequests = async (req, res) => {
+    try {
+        // Obtener los usuarios que son empleados
+        const employees = await User.find({ role: 'EMPLOYEE' });
+
+        if (!employees.length) {
+            return res.status(404).json({ message: 'No se encontraron empleados con solicitudes aprobadas.' });
+        }
+
+        // Obtener solo las solicitudes 'Aprobado' de los empleados
+        const approvedRequests = await vacationRequestModel.find({
+            uid: { $in: employees.map(boss => boss._id) },
+            status: 'Aprobado'
+        }).populate('uid', 'name surname email');
+
+        if (!approvedRequests.length) {
+            return res.status(404).json({ message: 'No se encontraron solicitudes aprobadas de los empleados.' });
+        }
+
+        return res.status(200).json({
+            message: 'Solicitudes aprobadas obtenidas correctamente.',
+            approvedRequests
+        });
+    } catch (err) {
+        console.error('Error al obtener las solicitudes aprobadas de los empleados', err);
+        return res.status(500).json({ message: 'Error al obtener las solicitudes aprobadas de los empleados', err });
+    }
+};
+
 export const getRefuseBossRequests = async (req, res) => {
     try {
         // Obtener los usuarios que son jefes
