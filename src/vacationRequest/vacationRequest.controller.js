@@ -509,3 +509,31 @@ export const getPendingBossRequests = async (req, res) => {
         return res.status(500).json({ message: 'Error al obtener las solicitudes pendientes de los jefes', err });
     }
 };
+
+export const getEmployeeVacationRequests = async (req, res) => {
+    try {
+        // Obtenemos a los usuarios que son empleados
+        const employees = await User.find({ role: 'EMPLOYEE' });
+
+        if (!employees.length) {
+            return res.status(404).json({ message: 'No se encontraron empleados con solicitudes.' });
+        }
+
+        // Obtenemos las solicitudes de vacaciones de los empleados
+        const employeeVacationRequests = await vacationRequestModel.find({
+            uid: { $in: employees.map(employee => employee._id) }
+        }).populate('uid', 'name surname email');
+
+        if (!employeeVacationRequests.length) {
+            return res.status(404).json({ message: 'No se encontraron solicitudes de vacaciones para los empleados.' });
+        }
+
+        return res.status(200).json({
+            message: 'Solicitudes de vacaciones obtenidas correctamente.',
+            vacationRequests: employeeVacationRequests
+        });
+    } catch (err) {
+        console.error('Error al obtener las solicitudes de vacaciones de los empleados', err);
+        return res.status(500).json({ message: 'Error al obtener las solicitudes de vacaciones de los empleados', err });
+    }
+};
