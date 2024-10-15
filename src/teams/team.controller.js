@@ -2,6 +2,7 @@ import mongoose from 'mongoose';
 import Team from './team.model.js';
 import User from '../users/user.model.js';
 
+// Funcion para crear un equipo (unicamente el admin puede)
 export const createTeam = async (req, res) => {
     try {
         const { name, members, boss, project, description  } = req.body;
@@ -27,6 +28,7 @@ export const createTeam = async (req, res) => {
     }
 };
 
+// Funcion para agregar un miembro a un equipo (admin y boss pueden)
 export const addMemberToTeam = async (req, res) => {
     try {
         const { userIds } = req.body;
@@ -107,6 +109,7 @@ export const addMemberToTeam = async (req, res) => {
     }
 };
 
+// Funcion para editar los campos de un equipo (admin y boss pueden)
 export const editTeam = async (req, res) => {
     try {
         const { teamId } = req.params;  // Obtener el ID del equipo desde los parámetros de la URL
@@ -156,6 +159,7 @@ export const editTeam = async (req, res) => {
     }
 };
 
+// Funcion para editar el jefe de un equipo (solo admin puede)
 export const editTeamBoss = async (req, res) => {
     try {
         const { teamId } = req.params;  // Obtener el ID del equipo desde los parámetros de la URL
@@ -202,6 +206,7 @@ export const editTeamBoss = async (req, res) => {
     }
 };
 
+// Funcion para eliminar un miembro del equipo (admin y boss pueden)
 export const removeMemberFromTeam = async (req, res) => {
     try {
         const { teamId } = req.params;  // Obtener el ID del equipo desde los parámetros de la URL
@@ -249,6 +254,7 @@ export const removeMemberFromTeam = async (req, res) => {
     }
 };
 
+// Funcion para eliminar un equipo (solo admin puede)
 export const deleteTeam = async (req, res) => {
     try {
         const { teamId } = req.params;  // Obtener el ID del equipo desde los parámetros de la URL
@@ -276,6 +282,7 @@ export const deleteTeam = async (req, res) => {
     }
 };
 
+//Funcion para ver todos los equipos (solo admin puede)
 export const getTeams = async (req, res) => {
     try {
         // Buscar todos los equipos en la base de datos
@@ -299,6 +306,7 @@ export const getTeams = async (req, res) => {
     }
 };
 
+// Funcion para ver un equipo en especifico, por id (admin)
 export const getTeamById = async (req, res) => {
     try {
         const { teamId } = req.params;  // Obtener el ID del equipo desde los parámetros de la URL
@@ -329,6 +337,7 @@ export const getTeamById = async (req, res) => {
     }
 };
 
+// Funcion para ver los miembros de un equipo y sus dias de descanso (admin y boss)
 export const getTeamMembersWithVacationDays = async (req, res) => {
     try {
         const { teamId } = req.params;  // Obtener el ID del equipo desde los parámetros de la URL
@@ -372,6 +381,7 @@ export const getTeamMembersWithVacationDays = async (req, res) => {
     }
 };
 
+// Funcion para ver a que equipo pertenece un usuario
 export const getUserTeams = async (req, res) => {
     try {
         const { uid } = req.params; // Obtener el ID del usuario desde los parámetros de la URL
